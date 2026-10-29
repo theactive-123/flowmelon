@@ -1,0 +1,102 @@
+<!--
+title: Contact FlowMelon — Start Your Webflow Project
+description: Tell us about your Webflow project or book a free 15-minute call. A real person replies within 24 hours.
+page: contact
+bodyClass: page-contact
+css: contact
+-->
+<!-- ============================== HERO ============================== -->
+<section class="section_hero contact-hero section-light-gradient" data-hero>
+  <div class="contact-hero_orb gl-canvas" data-gl="orb" aria-hidden="true"></div>
+  <div class="padding-global">
+    <div class="container-large contact-hero_inner">
+      <div class="contact-hero_title-wrap">
+        <h1 class="heading-style-h1 contact-hero_title" data-hero-title>Let’s build something great.</h1>
+        <span class="sticker is-gold" style="--r:22deg;right:-2rem;top:-2.5rem" data-sticker data-depth="0.6">Let’s talk</span>
+        <!-- @include sticker-star {"style":"left:-4.5rem;top:-1.5rem","id":"ch","depth":"1"} -->
+        <!-- @include sticker-smiley {"style":"right:-3rem;bottom:-3rem","id":"ch","depth":"0.9","c1":"#5b74ff","c2":"#1a1fd0","c3":"#05053f","fg":"#ffffff"} -->
+      </div>
+      <p class="text-size-medium text-color-grey contact-hero_sub" data-hero-item>Tell us about your project or book a free 15-minute call. A real person replies within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FORM ============================== -->
+<section class="section_contact" id="form">
+  <div class="padding-global padding-section-medium">
+    <div class="container-large contact">
+      <div class="contact_info">
+        <span class="eyebrow" data-reveal>Contact us</span>
+        <h2 class="heading-style-h2" data-split>Tell us about your project</h2>
+        <div class="contact_block" data-reveal>
+          <div class="footer_label">Email us</div>
+          <a class="contact_email text-link" href="mailto:hello@flowmelon.com">hello@flowmelon.com</a>
+          <div><!-- @include btn-icon {"href":"#book","label":"Book a Free 15-Min Call","class":"is-small"} --></div>
+        </div>
+        <div class="contact_block" data-reveal>
+          <div class="footer_city"><div class="footer_city-name">Karachi</div><div class="footer_time"><span class="footer_time-dot"></span><span data-clock="Asia/Karachi">--:--</span> &nbsp;-&nbsp; Local Time</div></div>
+          <div class="footer_city"><div class="footer_city-name">United States</div><div class="footer_time"><span class="footer_time-dot is-red"></span><span data-clock="America/New_York">--:--</span> &nbsp;-&nbsp; Local Time</div></div>
+        </div>
+      </div>
+      <div class="contact_form-wrap" data-reveal>
+        <form class="contact_form" data-form name="contact" method="post" action="#" novalidate>
+          <div class="contact_row">
+            <label class="field"><span class="sr-only">Your name</span><input class="input" type="text" name="name" placeholder="Your name" required autocomplete="name"></label>
+            <label class="field"><span class="sr-only">Work email</span><input class="input" type="email" name="email" placeholder="Work email" required autocomplete="email"></label>
+          </div>
+          <div class="contact_row">
+            <label class="field"><span class="sr-only">Agency or company</span><input class="input" type="text" name="company" placeholder="Agency or company" autocomplete="organization"></label>
+            <label class="field"><span class="sr-only">Service you need</span>
+              <select class="input" name="service" required>
+                <option value="" disabled selected>Service you need</option>
+                <option>Webflow Development</option><option>Figma to Webflow</option><option>Webflow Design</option><option>Webflow Migration</option><option>Webflow + Shopify</option><option>White-label partnership</option><option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+          <div class="field">
+            <span class="field_label">Budget range</span>
+            <div class="select-chips" data-chip-select>
+              <input type="hidden" name="budget">
+              <button type="button" class="select-chip">$3k – $8k</button>
+              <button type="button" class="select-chip">$8k – $15k</button>
+              <button type="button" class="select-chip">$15k – $30k</button>
+              <button type="button" class="select-chip">$30k+</button>
+            </div>
+          </div>
+          <label class="field"><span class="sr-only">Project details</span><textarea class="input" name="message" placeholder="Tell us about the project, goals and timeline" required></textarea></label>
+          <div class="contact_submit">
+            <button type="submit" class="button is-icon" data-magnetic><span class="button_label"><span>Send message</span><span aria-hidden="true">Send message</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+            <span class="text-size-tiny text-color-grey">By sending you agree to our privacy policy. No spam, ever.</span>
+          </div>
+        </form>
+        <div class="form-success" data-form-success hidden>Thanks! Your message is in. We’ll reply within 24 hours. 🎉</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== BOOK A CALL ============================== -->
+<section class="section_book" id="book">
+  <div class="padding-global padding-section-medium">
+    <div class="container-large">
+      <div class="book" data-scale-in>
+        <span class="sticker is-red" style="--r:-12deg;left:2rem;top:-1.4rem" data-sticker data-depth="0.5">Replies within 24h</span>
+        <!-- @include sticker-star5 {"style":"right:6%;top:-2rem","id":"bk","depth":"0.8"} -->
+        <div class="book_text">
+          <h2 class="heading-style-h2" data-split>Prefer to talk? Grab a free 15-minute call.</h2>
+          <p class="text-size-medium">No pitch deck, no pressure. Bring your site, your Figma file or just an idea — we’ll tell you honestly how we’d approach it.</p>
+        </div>
+        <div class="book_slots" data-chip-select>
+          <div class="book_day">Next available · ET</div>
+          <button type="button" class="select-chip is-light">Mon · 10:00</button>
+          <button type="button" class="select-chip is-light">Mon · 14:30</button>
+          <button type="button" class="select-chip is-light">Tue · 11:00</button>
+          <button type="button" class="select-chip is-light">Wed · 09:30</button>
+          <button type="button" class="select-chip is-light">Thu · 16:00</button>
+          <button type="button" class="select-chip is-light">Fri · 12:00</button>
+          <!-- @include btn-icon {"href":"mailto:hello@flowmelon.com?subject=Book%20a%2015-min%20call","label":"Confirm a time","class":"is-white"} -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

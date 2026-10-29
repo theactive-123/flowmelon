@@ -1,0 +1,77 @@
+<!--
+title: How to hand off a Figma file developers actually love | FlowMelon
+description: A practical Figma-to-Webflow handoff checklist: auto layout, components and variants, styles and variables, responsive frames, interaction notes and asset exports — so your build matches the design to the pixel.
+page: blog
+bodyClass: page-post
+css: blog
+js: blog-post
+-->
+<!-- @include blogC-post-open {"cat":"Design","title":"How to hand off a Figma file developers actually love","lead":"The difference between a two-week Webflow build and a six-week one is usually decided before development starts — inside the Figma file.","date":"Oct 8, 2026","read":"7","img":"tutortoday","alt":"TutorToday website built in Webflow from a Figma design"} -->
+        <p class="post-intro">We turn dozens of Figma files into Webflow sites every quarter. The best ones aren’t the prettiest — they’re the clearest. A developer opening them never has to guess what a component does on hover, how a grid collapses on tablet, or which of three nearly-identical blues is the real one.</p>
+        <p>Here’s the checklist we send to designers and agencies before a build. Tick these off and you’ll get a faster build, fewer review rounds and a site that matches your file to the pixel.</p>
+
+        <h2 data-toc="Auto layout">1. Use auto layout on every key frame</h2>
+        <p>Webflow is a flexbox and grid engine. When your frames use auto layout, spacing, alignment and wrapping translate almost one-to-one into the build. Absolute-positioned groups force a developer to reverse-engineer intent.</p>
+        <ul>
+          <li>Wrap sections, cards, buttons and nav items in auto layout frames with real padding and gap values.</li>
+          <li>Use “fill container” and “hug contents” deliberately — they map directly to how elements should stretch.</li>
+          <li>Keep decorative, overlapping elements (stickers, blobs, floating badges) in clearly named layers so they’re easy to separate.</li>
+        </ul>
+
+        <h2 data-toc="Components and variants">2. Name components and their variants</h2>
+        <p>Components become Webflow components and classes. Clear naming is the cheapest way to get a clean class system.</p>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead><tr><th>Figma layer</th><th>Webflow class</th><th>CMS field</th></tr></thead>
+            <tbody>
+              <tr><td>Hero / Title</td><td><code>hero_title</code></td><td>Heading</td></tr>
+              <tr><td>Card / Image</td><td><code>card_image</code></td><td>Cover image</td></tr>
+              <tr><td>Card / Tag</td><td><code>card_tag</code></td><td>Category</td></tr>
+              <tr><td>Button / Primary / Hover</td><td><code>button is-primary</code></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Variants should cover every state you care about: default, hover, focus, active and disabled. If a state isn’t in the file, it will be invented during the build — and invented states are where design drift starts.</p>
+
+        <h2 data-toc="Styles and variables">3. Set up styles and variables</h2>
+        <p>Webflow now supports variables for colour, size and typography, so a well-structured Figma file maps straight across.</p>
+        <ul>
+          <li><strong>Colours</strong> as variables with semantic names: <code>text/primary</code>, <code>bg/surface</code>, <code>brand/blue</code>.</li>
+          <li><strong>Type styles</strong> for every heading level and body size, including line height and letter spacing.</li>
+          <li><strong>Spacing</strong> on a consistent scale (4, 8, 16, 24, 32, 48, 64…) rather than one-off values.</li>
+        </ul>
+        <div class="post-code">
+          <div class="post-code_bar"><span>How your tokens land in Webflow</span><button class="post-code_copy" type="button" data-copy-code>Copy</button></div>
+<pre><span class="c-k">:root</span> {
+  <span class="c-a">--brand--blue</span>: <span class="c-s">#146ef5</span>;
+  <span class="c-a">--text--primary</span>: <span class="c-s">#03011d</span>;
+  <span class="c-a">--space--section-large</span>: <span class="c-s">10rem</span>;
+  <span class="c-a">--radius--card</span>: <span class="c-s">1.25rem</span>;
+}</pre>
+        </div>
+
+        <h2 data-toc="Responsive frames">4. Design three breakpoints, not one</h2>
+        <p>A desktop-only file means the developer designs tablet and mobile on the fly. Give us at least desktop (1440 or 1920), tablet (768–991) and mobile (375–390) for every unique section — repeated patterns only need it once.</p>
+        <div class="post-callout"><span class="post-callout_icon">i</span><div><strong>Big screens matter too</strong>If your audience works on 27-inch monitors, show how the layout behaves at 1920px and beyond. Should the container stop growing, or should the type keep scaling? It’s a design decision, not a development one.</div></div>
+
+        <h2 data-toc="Interactions">5. Note the interactions</h2>
+        <p>Motion is part of the design. A short note next to each section saves hours of back-and-forth:</p>
+        <ul>
+          <li>What triggers it — page load, scroll into view, hover or click?</li>
+          <li>What moves — opacity, position, scale, a mask reveal, a counter?</li>
+          <li>How it feels — a timing and easing, or a link to a reference site.</li>
+        </ul>
+        <blockquote class="post-quote">“If a state isn’t in the file, it gets invented during the build. That’s where design drift starts.”<cite>— Our build lead, roughly every week</cite><!-- @include sticker-star5 {"style":"","id":"q2","size":"is-star-sm"} --></blockquote>
+
+        <h2 data-toc="Assets">6. Export or link every asset</h2>
+        <p>Mark icons and logos as SVG exports and photos as high-resolution images. Use real content wherever possible — real headlines expose layout problems that “Lorem ipsum” hides.</p>
+        <figure class="post-figure"><div class="post-figure_media" data-clip-reveal><img src="{{root}}assets/img/projects/brian-williams.webp" alt="Brian Williams website built pixel-perfect from Figma" loading="lazy" width="1800" height="1200" data-parallax-img></div><figcaption>Built from a fully-specced Figma file: two review rounds, zero design drift.</figcaption></figure>
+
+        <h2 data-toc="Not sure it’s ready?">Not sure your file is ready?</h2>
+        <p>Send it anyway. We review Figma files for free within 24 hours and tell you exactly what to tidy up before the build — or we tidy it up for you. <a href="{{root}}services/figma-to-webflow.html">See our Figma to Webflow service</a>.</p>
+<!-- @include blogC-post-close -->
+<!-- @include blogC-related-open -->
+        <!-- @include blogC-card {"href":"{{root}}blog/webflow-seo-migration-guide.html","img":"twirl","alt":"Twirl website","cat":"Migration","cats":"migration","title":"Webflow migrations without losing SEO: a 6-step checklist","date":"Oct 12, 2026","read":"9"} -->
+        <!-- @include blogC-card {"href":"{{root}}blog/webflow-vs-wordpress.html","img":"brian-williams","alt":"Brian Williams website on a laptop","cat":"Webflow","cats":"webflow","title":"Webflow vs WordPress in 2026: an honest comparison for marketing teams","date":"Sep 29, 2026","read":"8"} -->
+        <!-- @include blogC-card {"href":"{{root}}work/thermolab.html","img":"thermolab","alt":"ThermoLab store on a laptop","cat":"Case study","cats":"shopify","title":"ThermoLab: +89% sales after a speed-first rebuild","date":"Case study","read":"5","cursor":"View"} -->
+<!-- @include blogC-related-close {"ctaTitle":"Got a Figma file ready?","ctaText":"Send it over for a free file review. We reply within 24 hours with a scope, a timeline and a fixed quote."} -->

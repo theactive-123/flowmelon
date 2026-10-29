@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Contact page
+   ========================================================================== */
+.contact-hero { min-height: 46rem; display: flex; align-items: center; padding-top: calc(var(--header-h) + 6rem); padding-bottom: 5rem; }
+.contact-hero .padding-global { width: 100%; position: relative; z-index: 2; }
+.contact-hero_orb { left: auto; right: -6rem; top: 6rem; width: 34rem; height: 34rem; opacity: .9; }
+.contact-hero_inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+.contact-hero_title-wrap { position: relative; }
+.contact-hero_title { max-width: 60rem; font-size: 7.2rem; }
+.contact-hero_sub { max-width: 34rem; }
+.contact { display: grid; grid-template-columns: 1fr 1.7fr; gap: 6rem; align-items: start; }
+.contact_info { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; position: sticky; top: calc(var(--header-h) + 2rem); }
+.contact_block { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.contact_block .footer_label { margin-bottom: 0; }
+.contact_email { font-family: var(--f-display); font-size: 1.9rem; font-weight: 500; }
+.contact_form { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact_row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.contact_submit { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: .5rem; }
+.form-success { margin-top: 1.5rem; }
+.book { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; border-radius: var(--radius-l); background: var(--blue); color: #fff; padding: 5rem 4rem; isolation: isolate; }
+.book::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: radial-gradient(40rem 20rem at 0% 0%, rgba(255, 255, 255, .22), transparent 70%), radial-gradient(30rem 25rem at 100% 100%, rgba(3, 1, 29, .35), transparent 70%); }
+.book_text { display: flex; flex-direction: column; gap: 1.5rem; }
+.book_text p { opacity: .85; max-width: 36rem; }
+.book_slots { display: flex; flex-wrap: wrap; gap: .6rem; }
+.book_day { width: 100%; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: .4rem; }
+.select-chip.is-light { border-color: rgba(255, 255, 255, .4); color: #fff; }
+.select-chip.is-light:hover { border-color: #fff; transform: translateY(-2px); }
+.select-chip.is-light.is-active { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.book_slots .button { margin-top: 1rem; }
+@media (max-width: 991px) {
+  .contact { grid-template-columns: 1fr; gap: 3rem; }
+  .contact_info { position: static; }
+  .contact-hero_title { font-size: 5rem; }
+  .book { grid-template-columns: 1fr; }
+  .contact-hero_orb { opacity: .5; }
+}
+@media (max-width: 767px) {
+  .contact-hero_title { font-size: 3.2rem; }
+  .contact-hero_orb { width: 20rem; height: 20rem; right: -8rem; top: 4rem; }
+  .contact-hero .sticker-shape.is-star { left: -1rem !important; top: -3rem !important; }
+  .contact-hero .sticker-shape.is-smiley { right: -.5rem !important; }
+  .contact-hero .sticker { right: 0 !important; }
+  .contact_row { grid-template-columns: 1fr; }
+  .book { padding: 3.5rem 1.5rem; }
+}
+@media (max-width: 767px) { .contact-hero .sticker-shape.is-smiley { display: none; } }

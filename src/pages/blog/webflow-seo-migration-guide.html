@@ -1,0 +1,85 @@
+<!--
+title: Webflow migrations without losing SEO: a 6-step checklist | FlowMelon
+description: The exact checklist FlowMelon uses to migrate sites from WordPress, Wix and Squarespace to Webflow without losing rankings — crawl, redirect map, rebuild, staging QA, launch and 30-day monitoring.
+page: blog
+bodyClass: page-post
+css: blog
+js: blog-post
+-->
+<!-- @include blogC-post-open {"cat":"Migration","title":"Webflow migrations without losing SEO: a 6-step checklist","lead":"Moving to Webflow should make your site faster and easier to run — not quietly cost it years of search rankings. Here’s the process we run on every migration.","date":"Oct 12, 2026","read":"9","img":"twirl","alt":"Twirl website migrated to Webflow, shown on a laptop"} -->
+        <p class="post-intro">Most ranking drops after a migration have nothing to do with the new platform. They come from missing redirects, rewritten headings, lost metadata and a launch that nobody watched. Webflow is excellent for SEO — clean markup, fast global hosting, editable meta on every page — but only if the move itself is handled carefully.</p>
+        <p>This is the six-step checklist we use for agency partners moving sites from WordPress, Wix, Squarespace and HubSpot. It works for a 20-page brochure site and for a 2,000-item blog; the bigger the site, the more each step matters.</p>
+
+        <h2 data-toc="Crawl and inventory">1. Crawl and inventory everything</h2>
+        <p>Before anyone opens Figma, take a full snapshot of the live site. You can’t protect what you haven’t measured.</p>
+        <ul>
+          <li><strong>Crawl every URL</strong> with Screaming Frog or Sitebulb. Export status codes, titles, meta descriptions, H1s, canonicals and word count.</li>
+          <li><strong>Pull 12 months of data</strong> from Google Search Console and Analytics: clicks, impressions and landing-page sessions per URL.</li>
+          <li><strong>Export backlinks</strong> from Ahrefs or Semrush so you know which pages other sites point to.</li>
+          <li><strong>Note structured data</strong> — FAQ, product, article and breadcrumb schema all need to survive the move.</li>
+        </ul>
+        <p>Merge it into one sheet. Sort by clicks and backlinks; the top 20% of URLs usually carry 80% of the organic value, and those pages get the most care.</p>
+
+        <h2 data-toc="Map every URL">2. Map every URL to its new home</h2>
+        <p>Build the redirect map while the sitemap is still being designed, not the week before launch. Every legacy URL gets exactly one destination.</p>
+        <ol>
+          <li>Keep the same slug wherever you can. The safest redirect is the one you don’t need.</li>
+          <li>Merged or renamed pages get a <code>301</code> to the closest relevant page — never a blanket redirect to the homepage.</li>
+          <li>Retired content with backlinks gets redirected to the most related surviving page.</li>
+          <li>Thin pages with no traffic and no links can return a <code>410</code> and leave quietly.</li>
+        </ol>
+        <div class="post-callout"><span class="post-callout_icon">!</span><div><strong>Watch the WordPress patterns</strong>WordPress loves date-based post URLs and <code>/category/</code> archives. Webflow collections live under a single folder, so <code>/2023/04/my-post/</code> becomes <code>/blog/my-post</code>. Map the pattern once with a wildcard rule instead of hundreds of single lines.</div></div>
+        <div class="post-code">
+          <div class="post-code_bar"><span>Webflow → Site settings → Publishing → 301 redirects</span><button class="post-code_copy" type="button" data-copy-code>Copy</button></div>
+<pre><span class="c-c"># Old path                     →  New path</span>
+<span class="c-a">/2023/(.*)/(.*)</span>              <span class="c-k">→</span>  <span class="c-s">/blog/%2</span>
+<span class="c-a">/category/webflow</span>            <span class="c-k">→</span>  <span class="c-s">/blog?topic=webflow</span>
+<span class="c-a">/services/web-design-agency</span>  <span class="c-k">→</span>  <span class="c-s">/services/webflow-design</span>
+<span class="c-a">/contact-us</span>                  <span class="c-k">→</span>  <span class="c-s">/contact</span></pre>
+        </div>
+
+        <h2 data-toc="Rebuild with intent">3. Rebuild with the same intent</h2>
+        <p>A redesign is the perfect moment to improve a site — and the most common moment to break its SEO. Redesign the look freely, but treat the ranking signals as part of the brief:</p>
+        <ul>
+          <li>Keep the H1 and primary heading structure of pages that rank. Tighten copy, don’t delete the topic.</li>
+          <li>Move titles and meta descriptions over exactly, then improve them deliberately afterwards.</li>
+          <li>Recreate internal links. Navigation changes often orphan pages that used to be two clicks deep.</li>
+          <li>Bind CMS fields to SEO settings so every new blog post gets a title, description and Open Graph image automatically.</li>
+          <li>Add alt text to every meaningful image and rebuild structured data with a custom embed or CMS-driven JSON-LD.</li>
+        </ul>
+        <blockquote class="post-quote">“Rankings rarely drop because of Webflow. They drop because of missing redirects and forgotten metadata.”<cite>— Every migration post-mortem we’ve ever read</cite><!-- @include sticker-star5 {"style":"","id":"q1","size":"is-star-sm"} --></blockquote>
+
+        <h2 data-toc="Speed and Core Web Vitals">4. Make it faster than before</h2>
+        <p>Speed is a ranking factor and a conversion factor. Webflow gives you a fast CDN out of the box; the rest is discipline:</p>
+        <ul>
+          <li>Serve images as WebP or AVIF with responsive sizes, and lazy-load everything below the fold.</li>
+          <li>Keep custom code light. Load animation libraries once, site-wide, instead of per page.</li>
+          <li>Preload the two fonts you actually use and drop the weights you don’t.</li>
+          <li>Check Largest Contentful Paint on mobile — the hero image is usually the culprit.</li>
+        </ul>
+        <figure class="post-figure"><div class="post-figure_media" data-clip-reveal><img src="{{root}}assets/img/projects/thermolab-store.webp" alt="ThermoLab store pages after migration" loading="lazy" width="1800" height="1120" data-parallax-img></div><figcaption>ThermoLab’s rebuilt storefront loads in under half the time of the old theme — on mobile, where most of their traffic lives.</figcaption></figure>
+
+        <h2 data-toc="Staging and DNS">5. Test on staging, then switch DNS</h2>
+        <p>Run the whole redirect map against the staging domain before launch. A simple script that requests each old path and checks for a single <code>301</code> hop to the right destination catches 95% of problems.</p>
+        <ol>
+          <li>Crawl staging and compare titles, H1s and canonicals against your original inventory.</li>
+          <li>Test every form, integration and analytics event end to end.</li>
+          <li>Lower the DNS TTL to 300 seconds a day early so the cutover is quick.</li>
+          <li>Publish, switch DNS, then submit the new sitemap in Search Console the same hour.</li>
+        </ol>
+
+        <h2 data-toc="Monitor for 30 days">6. Monitor for 30 days</h2>
+        <p>Launch day is the start of the migration, not the end. For the next month:</p>
+        <ul>
+          <li>Check Search Console coverage daily for the first week, then weekly.</li>
+          <li>Fix any 404 the same day it appears — it’s almost always a missed redirect.</li>
+          <li>Compare rankings for your top 50 keywords weekly. Small wobbles in week one are normal; steady drops are not.</li>
+        </ul>
+        <div class="post-callout is-pink"><span class="post-callout_icon">✓</span><div><strong>The quiet win</strong>Done properly, a migration is boring in the best way: faster pages, a CMS your marketing team can actually use, and the rankings you already earned — usually with a lift within the first quarter.</div></div>
+        <p>Planning a move to Webflow? We run migrations white-label for agencies and directly for in-house teams. <a href="{{root}}services/webflow-migration.html">See how our migration service works</a>.</p>
+<!-- @include blogC-post-close -->
+<!-- @include blogC-related-open -->
+        <!-- @include blogC-card {"href":"{{root}}blog/webflow-vs-wordpress.html","img":"brian-williams","alt":"Brian Williams website on a laptop","cat":"Webflow","cats":"webflow","title":"Webflow vs WordPress in 2026: an honest comparison for marketing teams","date":"Sep 29, 2026","read":"8"} -->
+        <!-- @include blogC-card {"href":"{{root}}blog/figma-to-webflow-handoff-checklist.html","img":"tutortoday","alt":"TutorToday website","cat":"Design","cats":"design","title":"How to hand off a Figma file developers actually love","date":"Oct 8, 2026","read":"7"} -->
+        <!-- @include blogC-card {"href":"{{root}}work/thermolab.html","img":"thermolab","alt":"ThermoLab store on a laptop","cat":"Case study","cats":"shopify","title":"ThermoLab: +89% sales after a speed-first rebuild","date":"Case study","read":"5","cursor":"View"} -->
+<!-- @include blogC-related-close {"ctaTitle":"Need a migration partner?","ctaText":"We migrate sites to Webflow white-label for agencies — so your client never sees a ranking drop."} -->

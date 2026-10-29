@@ -1,0 +1,36 @@
+<div class="post-progress" aria-hidden="true"><span data-post-progress></span></div>
+<section class="section_hero post-hero section-light-gradient" data-hero>
+  <div class="padding-global">
+    <div class="container-medium post-hero_inner">
+      <nav class="breadcrumb post-hero_crumb" aria-label="Breadcrumb" data-hero-item><a href="{{root}}blog.html">Blog</a><span>/</span><strong>{{cat}}</strong></nav>
+      <span class="eyebrow is-blue" data-hero-item>{{cat}}</span>
+      <h1 class="heading-style-h2 post-hero_title" data-hero-title>{{title}}</h1>
+      <p class="text-size-medium text-color-grey post-hero_lead" data-hero-item>{{lead}}</p>
+      <div class="post-hero_meta" data-hero-item><img src="{{root}}assets/img/team/team-1-sm.webp" alt="" width="80" height="80"> By Mirza Abbas <span>·</span> {{date}}</div>
+    </div>
+    <span class="sticker is-gold" style="--r:14deg;right:14%;top:28%" data-sticker data-depth="0.6">{{read}} min read</span>
+    <!-- @include sticker-star {"style":"left:10%;top:42%","id":"ph"} -->
+    <!-- @include sticker-smiley {"style":"right:9%;top:50%","id":"ph","c1":"#5d7bff","c2":"#1a2cd8","c3":"#06064a","fg":"#fff","depth":"0.9"} -->
+  </div>
+</section>
+<div class="padding-global">
+  <div class="container-large">
+    <figure class="post-cover" data-clip-reveal><img src="{{root}}assets/img/projects/{{img}}.webp" alt="{{alt}}" width="1800" height="1200" data-parallax-img></figure>
+    <div class="post-layout">
+      <aside class="post-aside">
+        <div class="post-aside_sticky">
+          <div class="post-author">
+            <img src="{{root}}assets/img/team/team-1-sm.webp" alt="Mirza Abbas" width="80" height="80">
+            <div><div class="post-author_name">Mirza Abbas</div><div class="post-author_role">Founder, FlowMelon</div></div>
+          </div>
+          <div class="post-aside_label">Share</div>
+          <div class="post-share">
+            <a class="post-share_btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{canonical}}" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="post-share_btn" href="https://x.com/intent/post?url={{canonical}}" target="_blank" rel="noopener">X</a>
+            <button class="post-share_btn" type="button" data-copy-link>Copy link</button>
+          </div>
+          <div class="post-aside_label">In this article</div>
+          <ol class="post-toc" data-post-toc></ol>
+        </div>
+      </aside>
+      <article class="post-body" data-post-body>

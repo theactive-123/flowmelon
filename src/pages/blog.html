@@ -1,0 +1,96 @@
+<!--
+title: Blog — Notes from the build desk | FlowMelon
+description: Practical writing on Webflow development, migrations, Figma handoff, SEO and running a white-label Webflow partnership with your agency.
+page: blog
+bodyClass: page-blog
+css: blog
+-->
+<section class="section_hero blog-hero section-light-gradient" data-hero>
+  <div class="padding-global">
+    <div class="container-large blog-hero_inner">
+      <span class="eyebrow" data-hero-item>The FlowMelon blog</span>
+      <h1 class="heading-style-h1 blog-hero_title" data-hero-title>Notes from the build desk.</h1>
+      <p class="text-size-medium text-color-grey blog-hero_sub" data-hero-item>Practical writing on Webflow, migrations, design handoff and running a white-label partnership with your agency.</p>
+      <span class="sticker is-gold" style="--r:16deg;right:17%;top:30%" data-sticker data-depth="0.6">Fresh reads</span>
+      <!-- @include sticker-star {"style":"left:15%;top:42%","id":"bh"} -->
+      <!-- @include sticker-smiley {"style":"right:22%;top:62%","id":"bh","c1":"#5d7bff","c2":"#1a2cd8","c3":"#06064a","fg":"#fff","depth":"0.9"} -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FEATURED ============================== -->
+<section class="section_featured">
+  <div class="padding-global">
+    <div class="container-large">
+      <a href="{{root}}blog/webflow-seo-migration-guide.html" class="featured-post" data-cursor="Read">
+        <div class="featured-post_media" data-clip-reveal>
+          <img src="{{root}}assets/img/projects/twirl.webp" alt="Twirl website on a laptop after a Webflow migration" width="1800" height="1200" data-parallax-img>
+        </div>
+        <span class="sticker is-red featured-post_sticker" style="--r:-10deg" data-sticker data-depth="0.5">New this week</span>
+        <div class="featured-post_body" data-reveal>
+          <span class="eyebrow is-blue">Featured · Migration</span>
+          <h2 class="heading-style-h3 featured-post_title">Webflow migrations without losing SEO: a 6-step checklist</h2>
+          <p class="text-size-regular text-color-grey">The exact checklist we use to move sites from WordPress, Wix and Squarespace to Webflow while keeping every ranking intact.</p>
+          <div class="blog-card_meta">Oct 12, 2026 <span>·</span> 9 min read</div>
+          <span class="button is-icon is-small featured-post_btn"><span class="button_label"><span>Read article</span><span aria-hidden="true">Read article</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LATEST ============================== -->
+<section class="section_latest">
+  <div class="padding-global padding-section-large">
+    <div class="container-large">
+      <div class="latest_head">
+        <h2 class="heading-style-h2" data-split>Latest articles</h2>
+        <div class="blog-filter" data-filter-group="#blog-list" role="group" aria-label="Filter articles" data-reveal>
+          <button class="blog-filter_btn is-active" type="button" data-filter="all">All</button>
+          <button class="blog-filter_btn" type="button" data-filter="webflow">Webflow</button>
+          <button class="blog-filter_btn" type="button" data-filter="migration">Migration</button>
+          <button class="blog-filter_btn" type="button" data-filter="design">Design</button>
+          <button class="blog-filter_btn" type="button" data-filter="shopify">Shopify</button>
+          <button class="blog-filter_btn" type="button" data-filter="agency">Agency life</button>
+        </div>
+      </div>
+      <div class="blog-grid" id="blog-list" data-reveal-stagger>
+        <!-- @include blogC-card {"href":"{{root}}blog/figma-to-webflow-handoff-checklist.html","img":"tutortoday","alt":"TutorToday site built from a Figma file","cat":"Design","cats":"design webflow","title":"How to hand off a Figma file developers actually love","date":"Oct 8, 2026","read":"7"} -->
+        <!-- @include blogC-card {"href":"{{root}}blog/webflow-vs-wordpress.html","img":"brian-williams","alt":"Brian Williams website on a laptop","cat":"Webflow","cats":"webflow agency","title":"Webflow vs WordPress in 2026: an honest comparison for marketing teams","date":"Sep 29, 2026","read":"8"} -->
+        <!-- @include blogC-card {"href":"{{root}}blog/webflow-seo-migration-guide.html","img":"twirl","alt":"Twirl website on a laptop","cat":"Migration","cats":"migration webflow","title":"Webflow migrations without losing SEO: a 6-step checklist","date":"Oct 12, 2026","read":"9"} -->
+        <!-- @include blogC-card {"href":"{{root}}contact.html","img":"thermolab-store","alt":"ThermoLab Shopify store","cat":"Shopify","cats":"shopify","title":"Shopify + Webflow: when a hybrid store makes sense","date":"Coming soon","read":"7","cursor":"Soon","badge":"<span class=\"blog-card_soon\">Coming soon</span>"} -->
+        <!-- @include blogC-card {"href":"{{root}}contact.html","img":"myatomos","alt":"MyAtomos content hub","cat":"Webflow","cats":"webflow","title":"Webflow CMS architecture that scales past 10,000 items","date":"Coming soon","read":"9","cursor":"Soon","badge":"<span class=\"blog-card_soon\">Coming soon</span>"} -->
+        <!-- @include blogC-card {"href":"{{root}}contact.html","img":"dermalyft","alt":"DermaLyft skincare storefront","cat":"Agency life","cats":"agency design","title":"The agency owner’s guide to white-label Webflow development","date":"Coming soon","read":"6","cursor":"Soon","badge":"<span class=\"blog-card_soon\">Coming soon</span>"} -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== TOPICS MARQUEE ============================== -->
+<section class="section_topics" aria-label="Topics we write about">
+  <div class="marquee topics-marquee" data-marquee data-speed="60" data-hover-slow>
+    <div class="marquee_track"><div class="marquee_group">
+      <span class="topic-pill is-lime">Webflow CMS</span><span class="topic-pill is-pink">Figma handoff</span><span class="topic-pill is-blue">Technical SEO</span><span class="topic-pill is-orange">Interactions</span><span class="topic-pill">Client-First</span><span class="topic-pill is-lime">Core Web Vitals</span><span class="topic-pill is-pink">Shopify</span><span class="topic-pill is-blue">White-label</span><span class="topic-pill is-orange">Migrations</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============================== NEWSLETTER ============================== -->
+<section class="section_newsletter">
+  <div class="padding-global padding-section-large">
+    <div class="container-large">
+      <div class="cta-banner newsletter" data-scale-in>
+        <span class="sticker is-red" style="--r:-10deg;left:2.5rem;top:-1rem" data-sticker data-depth="0.5">One email a month</span>
+        <!-- @include sticker-star5 {"style":"right:6%;top:2rem","id":"nl"} -->
+        <h2 class="heading-style-h2 cta-banner_title" data-split>Get the build notes</h2>
+        <p class="text-size-medium cta-banner_text">One practical email a month on Webflow, migrations and agency growth. No spam, unsubscribe anytime.</p>
+        <form class="newsletter_form" data-form novalidate>
+          <label class="sr-only" for="nl-email">Work email</label>
+          <input class="input newsletter_input" id="nl-email" type="email" name="email" placeholder="Your work email" required autocomplete="email">
+          <button class="button is-icon newsletter_btn" type="submit" data-magnetic="0.2"><span class="button_label"><span>Subscribe</span><span aria-hidden="true">Subscribe</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+        </form>
+        <p class="form-success newsletter_success" data-form-success hidden>You’re in. The next build note lands in your inbox soon.</p>
+      </div>
+    </div>
+  </div>
+</section>

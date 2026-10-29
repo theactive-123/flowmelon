@@ -398,7 +398,7 @@
         const len = rope.getTotalLength();
         gsap.fromTo(rope, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: p, start: 'top 85%', end: 'top 35%', scrub: true } });
       }
-      gsap.from(cards, { y: -160, opacity: 0, rotation: (i) => tilts[i] + (i % 2 ? 22 : -22), duration: 1.8, ease: 'elastic.out(1, 0.45)', stagger: 0.12, scrollTrigger: { trigger: p, start: 'top 75%', once: true } });
+      gsap.from(cards, { y: -110, opacity: 0, rotation: (i) => tilts[i] + (i % 2 ? 22 : -22), duration: 1.8, ease: 'elastic.out(1, 0.45)', stagger: 0.12, scrollTrigger: { trigger: p, start: 'top 75%', once: true } });
       if (TOUCH) return;
       cards.forEach((c, i) => {
         let lastX = 0;
@@ -648,7 +648,7 @@
         panels.forEach((p, i) => {
           const nextP = panels[i + 1];
           if (!nextP) return;
-          gsap.to(p, { scale: 0.92, filter: 'brightness(0.75)', ease: 'none', scrollTrigger: { trigger: nextP, start: 'top bottom', end: 'top 15%', scrub: true } });
+          gsap.fromTo(p, { scale: 1, filter: 'brightness(1)' }, { scale: 0.93, filter: 'brightness(0.82)', ease: 'none', scrollTrigger: { trigger: nextP, start: 'top bottom', end: 'top 15%', scrub: true } });
         });
       });
     });
