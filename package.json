@@ -1,0 +1,14 @@
+{
+  "name": "flowmelon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FlowMelon — Webflow development agency website (GSAP, three.js, Lenis). Static build, Webflow-ready class system.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch --serve",
+    "serve": "node build.mjs --serve"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED"
+}
