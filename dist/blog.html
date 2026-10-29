@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Notes from the build desk | FlowMelon</title>
+  <meta name="description" content="Practical writing on Webflow development, migrations, Figma handoff, SEO and running a white-label Webflow partnership with your agency.">
+  <link rel="canonical" href="https://www.flowmelon.com/blog">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FlowMelon">
+  <meta property="og:title" content="Blog — Notes from the build desk | FlowMelon">
+  <meta property="og:description" content="Practical writing on Webflow development, migrations, Figma handoff, SEO and running a white-label Webflow partnership with your agency.">
+  <meta property="og:image" content="https://www.flowmelon.com/assets/img/projects/twirl.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#03011d">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/sections.css">
+  <link rel="stylesheet" href="./assets/css/pages/blog.css">
+  <script>
+    /* Runs before paint: enables JS styles, honours reduced motion, skips the long preloader after the first visit. */
+    (function (d) {
+      var h = d.documentElement, rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      h.classList.remove('no-js'); h.classList.add('js-ready');
+      if (rm) h.classList.add('no-motion');
+      try { if (sessionStorage.getItem('fm-visited')) h.classList.add('is-returning'); sessionStorage.setItem('fm-visited', '1'); } catch (e) {}
+      setTimeout(function () { if (!h.classList.contains('app-ready')) { h.classList.remove('js-ready'); h.classList.add('app-failed'); } }, 8000);
+    })(document);
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"FlowMelon","url":"https://www.flowmelon.com","email":"hello@flowmelon.com","description":"Webflow development agency for startups, agencies and enterprises.","areaServed":"US"}</script>
+</head>
+<body class="page-blog" data-page="blog" data-sub="">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-caret" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="currentColor"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-drag" viewBox="0 0 24 24"><path d="M8 12h8m-8 0 3-3m-3 3 3 3m5-3-3-3m3 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v6.35h-4v-5.63c0-1.34-.02-3.07-1.87-3.07-1.88 0-2.16 1.46-2.16 2.97v5.73h-4z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.72H5.57z"/></symbol>
+  <symbol id="i-dribbble" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.6 4.6a8.5 8.5 0 0 1 1.9 5.3c-2.8-.6-5.3-.5-7.5 0l-.6-1.4c2.4-1 4.6-2.3 6.2-3.9zM12 3.5c2 0 3.9.7 5.4 1.9-1.5 1.5-3.5 2.7-5.7 3.6A47 47 0 0 0 8.4 4.3 8.5 8.5 0 0 1 12 3.5zM6.9 5a46 46 0 0 1 3.3 4.6C7.6 10.4 5 10.7 3.7 10.8A8.5 8.5 0 0 1 6.9 5zM3.5 12.3c1.6 0 4.6-.3 7.4-1.2l.6 1.3c-3.2 1-5.7 3.2-7 5.5a8.5 8.5 0 0 1-1-5.6zm3.1 6.7c1.2-2.2 3.4-4.2 6.3-5.1a35 35 0 0 1 1.8 6.6 8.5 8.5 0 0 1-8.1-1.5zm9.6.8a37 37 0 0 0-1.7-6.3c2-.4 4.2-.3 6.1.2a8.5 8.5 0 0 1-4.4 6.1z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.8a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zm4.9-9.1a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 8c-.1-1.6-.4-3-1.6-4.2C19 2.6 17.6 2.2 16 2.1 14.4 2 9.6 2 8 2.1c-1.6.1-3 .4-4.2 1.6C2.6 5 2.2 6.4 2.1 8 2 9.6 2 14.4 2.1 16c.1 1.6.4 3 1.6 4.2 1.2 1.2 2.6 1.6 4.2 1.6 1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.6 1.2-1.2 1.6-2.6 1.6-4.2.1-1.6.1-6.4 0-8zm-2.1 9.7a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.2 3.2 0 0 1 6.6 4.5c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></symbol>
+  <symbol id="i-webflow" viewBox="0 0 24 24"><path d="m24 4.52-7.66 14.96h-7.2l3.21-6.2h-.15C9.56 16.71 5.6 18.97 0 19.48v-6.12s3.58-.21 5.69-2.42H0V4.52h6.4v5.27h.14l2.61-5.27h4.84v5.24h.15l2.71-5.24z" fill="currentColor"/></symbol>
+</svg>
+
+
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader_inner">
+      <div class="preloader_logo"><svg viewBox="-1 -1 64 38" aria-hidden="true"><path class="pl-arc" d="M13.6517 6.65802L13.6292 20.8783C10.6695 18.9697 7.4587 17.4821 4.08908 16.4583L0 15.726V3.08931C4.76685 3.08931 9.07757 4.48339 13.5939 6.56166L13.6645 1.65669C22.755 1.5282 31.37 4.93952 38.2569 10.8403C42.0692 14.3542 45.1583 18.5792 47.3505 23.2777C48.9951 27.1099 50.1708 30.9356 50.3571 35.2302H35.867C34.4055 22.0603 26.0057 11.7878 13.6517 6.65802Z"/><path class="pl-arc" d="M60.9316 35.2399C60.347 27.8809 57.228 21.1064 51.9632 16.0858C48.0444 12.5524 43.4896 10.1562 38.2891 9.61972V0.217715C40.7393 -0.118221 43.2273 -0.0651044 45.661 0.375108C50.778 1.18779 55.3842 3.23394 59.6146 6.2341C64.9396 10.1197 69.2112 15.2723 72.0425 21.2253C74.1232 25.6144 75.2924 30.3798 75.4795 35.2335L60.9316 35.2399Z"/><path class="pl-arc" d="M13.3391 35.1331H24.0742C23.7439 27.4285 16.7799 22.1637 13.3391 20.4943V35.1331Z"/></svg></div>
+      <div class="preloader_bar"><span></span></div>
+      <div class="preloader_count"><span data-preloader-count>000</span></div>
+    </div>
+    <div class="preloader_word">Webflow Development Agency</div>
+  </div>
+  <div class="transition" aria-hidden="true"><div class="transition_col"></div><div class="transition_col"></div><div class="transition_col"></div><div class="transition_col"></div><div class="transition_col"></div></div>
+  <div class="cursor is-hidden" aria-hidden="true"><div class="cursor_ring"><span class="cursor_label"></span></div><div class="cursor_dot"></div></div>
+
+  <header class="navbar" data-navbar>
+  <div class="padding-global" style="width:100%">
+    <div class="container-large navbar_inner">
+      <a href="./index.html" class="navbar_logo" aria-label="FlowMelon home" data-cursor-hover><svg class="logo_svg" viewBox="0 0 261 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g class="logo_mark" fill="#146EF5"><path class="logo_arc" d="M13.6517 6.65802L13.6292 20.8783C10.6695 18.9697 7.4587 17.4821 4.08908 16.4583L0 15.726V3.08931C4.76685 3.08931 9.07757 4.48339 13.5939 6.56166L13.6645 1.65669C22.755 1.5282 31.37 4.93952 38.2569 10.8403C42.0692 14.3542 45.1583 18.5792 47.3505 23.2777C48.9951 27.1099 50.1708 30.9356 50.3571 35.2302H35.867C34.4055 22.0603 26.0057 11.7878 13.6517 6.65802Z"/><path class="logo_arc" d="M60.9316 35.2399C60.347 27.8809 57.228 21.1064 51.9632 16.0858C48.0444 12.5524 43.4896 10.1562 38.2891 9.61972V0.217715C40.7393 -0.118221 43.2273 -0.0651044 45.661 0.375108C50.778 1.18779 55.3842 3.23394 59.6146 6.2341C64.9396 10.1197 69.2112 15.2723 72.0425 21.2253C74.1232 25.6144 75.2924 30.3798 75.4795 35.2335L60.9316 35.2399Z"/><path class="logo_arc" d="M13.3391 35.1331H24.0742C23.7439 27.4285 16.7799 22.1637 13.3391 20.4943V35.1331Z"/></g><g class="logo_word" fill="currentColor"><path d="M90.2241 8.48459H104.285V12.3203H94.4357V19.4413H104.285V23.2736H94.4357V34.5054H90.2241V8.48459Z"/><path d="M111.896 8.48442V28.6494C111.896 29.4704 112.039 30.0465 112.325 30.3776C112.445 30.5308 112.598 30.655 112.772 30.741C112.946 30.827 113.138 30.8725 113.332 30.8743H114.735V34.5052H112.819C111.288 34.5052 110.09 34.0656 109.225 33.1864C108.359 32.3072 107.925 30.8754 107.923 28.891V8.48442H111.896Z"/><path d="M116.383 25.6022C116.374 24.3639 116.612 23.1363 117.084 21.9913C117.542 20.8757 118.217 19.8626 119.071 19.0114C119.953 18.1418 121.001 17.4573 122.151 16.9979C123.406 16.4955 124.747 16.2436 126.098 16.2563C127.446 16.2389 128.783 16.4887 130.034 16.9912C131.169 17.4463 132.201 18.1229 133.071 18.9814C133.941 19.8399 134.631 20.8631 135.101 21.9913C135.587 23.1331 135.834 24.3616 135.83 25.6022C135.844 26.85 135.616 28.0888 135.158 29.2499C134.716 30.3546 134.052 31.3564 133.205 32.193C132.324 33.0498 131.283 33.7248 130.142 34.1796C127.547 35.1611 124.683 35.1611 122.088 34.1796C120.946 33.7248 119.905 33.0498 119.024 32.193C118.179 31.3563 117.515 30.3544 117.074 29.2499C116.61 28.0902 116.375 26.8514 116.383 25.6022ZM126.115 19.8973C125.379 19.8945 124.651 20.0406 123.974 20.3269C123.315 20.6029 122.717 21.004 122.212 21.5081C121.699 22.024 121.292 22.635 121.014 23.3068C120.71 24.0383 120.559 24.8237 120.567 25.6156C120.564 26.3689 120.716 27.1149 121.014 27.8069C121.586 29.1498 122.643 30.228 123.974 30.8271C124.646 31.1323 125.376 31.2902 126.115 31.2902C126.853 31.2902 127.583 31.1323 128.256 30.8271C129.587 30.228 130.643 29.1498 131.215 27.8069C131.515 27.1154 131.667 26.3691 131.662 25.6156C131.672 24.8236 131.52 24.0378 131.215 23.3068C130.937 22.635 130.53 22.024 130.017 21.5081C128.982 20.4749 127.578 19.8955 126.115 19.8973Z"/><path d="M162.052 16.6659H166.297L159.726 34.5053H156.404L152.126 22.2466L147.911 34.5053H144.588L138.018 16.6659H142.263L146.233 27.9648L150.136 16.6659H154.163L158.132 27.9984L162.052 16.6659Z"/><path d="M190.68 11.0416H194.261V34.5053H190.462V19.0687L181.697 34.7839L172.898 19.0116V34.512H169.099V11.0416H172.71L181.697 27.1494L190.68 11.0416Z"/><path d="M214.576 31.4182C213.606 32.5723 212.386 33.4903 211.009 34.1028C209.721 34.6307 208.341 34.8976 206.948 34.8881C205.603 34.9169 204.266 34.6808 203.012 34.1934C201.959 33.7773 201.007 33.1412 200.22 32.3276C199.481 31.5583 198.91 30.6442 198.542 29.643C198.171 28.6293 197.983 27.5579 197.985 26.4785C197.977 25.3653 198.176 24.2604 198.572 23.22C198.949 22.2118 199.531 21.293 200.282 20.5223C201.033 19.7515 201.937 19.1457 202.935 18.7434C204.061 18.2836 205.269 18.0553 206.485 18.0722C207.688 18.05 208.882 18.2785 209.992 18.7434C211.033 19.1934 211.961 19.8684 212.71 20.7199C213.494 21.6297 214.091 22.6843 214.469 23.824C214.907 25.1402 215.121 26.5209 215.1 27.908H201.854C202.093 28.9801 202.705 29.932 203.583 30.5927C204.552 31.2897 205.725 31.644 206.918 31.5994C207.812 31.5977 208.696 31.4079 209.512 31.0424C210.423 30.6217 211.226 29.9998 211.861 29.2235L214.576 31.4182ZM211.086 24.965C210.927 23.9201 210.375 22.9755 209.542 22.324C208.661 21.6418 207.57 21.2861 206.455 21.3173C205.815 21.3052 205.178 21.4051 204.573 21.6126C204.073 21.7851 203.612 22.0517 203.213 22.3978C202.847 22.7263 202.544 23.1186 202.317 23.5556C202.092 24.0007 201.926 24.4734 201.824 24.9616L211.086 24.965Z"/><path d="M221.983 11.0416V29.2267C221.983 29.9649 222.114 30.4851 222.372 30.7838C222.48 30.9225 222.618 31.035 222.775 31.1129C222.933 31.1907 223.106 31.2319 223.281 31.2334H224.547V34.5053H222.818C221.44 34.5053 220.36 34.1093 219.577 33.3174C218.794 32.5254 218.402 31.2334 218.402 29.4414V11.0416H221.983Z"/><path d="M226.03 26.4781C226.022 25.3609 226.237 24.2532 226.661 23.2197C227.075 22.2152 227.684 21.3028 228.453 20.5351C229.248 19.7479 230.193 19.1283 231.232 18.7128C232.364 18.2576 233.575 18.0296 234.796 18.0417C236.012 18.0283 237.219 18.2564 238.346 18.7128C239.367 19.1228 240.297 19.7313 241.082 20.5032C241.866 21.2751 242.49 22.195 242.917 23.2096C243.351 24.2406 243.572 25.3492 243.564 26.4681C243.573 27.594 243.364 28.7109 242.947 29.7568C242.549 30.7529 241.951 31.6565 241.188 32.4112C240.394 33.1842 239.454 33.7922 238.423 34.1998C236.086 35.0857 233.505 35.0857 231.168 34.1998C230.138 33.7922 229.199 33.1843 228.406 32.4112C227.643 31.6575 227.044 30.7536 226.648 29.7568C226.232 28.714 226.022 27.6006 226.03 26.4781ZM234.796 21.3203C234.142 21.3185 233.496 21.446 232.892 21.6954C232.288 21.9447 231.74 22.3111 231.279 22.7734C230.816 23.2381 230.449 23.7887 230.198 24.3942C229.923 25.0542 229.786 25.7633 229.795 26.4781C229.791 27.1578 229.929 27.8308 230.198 28.4547C230.713 29.6679 231.665 30.643 232.866 31.1863C233.473 31.4596 234.13 31.6009 234.796 31.6009C235.461 31.6009 236.119 31.4596 236.725 31.1863C237.319 30.9175 237.859 30.5409 238.316 30.0756C238.772 29.6062 239.139 29.0568 239.396 28.4547C239.666 27.8308 239.803 27.1578 239.799 26.4781C239.808 25.7633 239.671 25.0542 239.396 24.3942C239.144 23.7895 238.777 23.2392 238.316 22.7734C237.86 22.3181 237.319 21.9557 236.725 21.7062C236.114 21.4491 235.458 21.3179 234.796 21.3203Z"/><path d="M257.427 25.3336C257.429 24.8197 257.372 24.3073 257.256 23.8067C257.155 23.3531 256.967 22.9234 256.702 22.5415C256.438 22.1791 256.093 21.8828 255.696 21.6757C255.242 21.4438 254.738 21.3284 254.229 21.3402C253.73 21.3147 253.232 21.4026 252.773 21.5973C252.313 21.792 251.903 22.0885 251.575 22.4644C250.937 23.2161 250.618 24.2709 250.618 25.6289V34.4915H247.038V18.4206H250.618V19.8536H250.679C251.135 19.2383 251.763 18.7714 252.484 18.5112C253.197 18.2238 253.957 18.0713 254.726 18.0616C255.506 18.0624 256.281 18.1824 257.024 18.4173C257.764 18.647 258.449 19.025 259.038 19.5281C259.648 20.0651 260.132 20.7295 260.457 21.4744C260.839 22.377 261.023 23.3507 260.998 24.3302V34.5184H257.417L257.427 25.3336Z"/></g></svg></a>
+      <div class="navbar_right">
+        <a href="./contact.html" class="button is-blue navbar_cta" data-magnetic><span class="button_label"><span>Let’s talk</span><span aria-hidden="true">Let’s talk</span></span></a>
+
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" data-menu-toggle data-magnetic="0.4">
+          <span class="menu-button_lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <div class="menu" id="site-menu" data-menu aria-hidden="true">
+  <div class="menu_backdrop" data-menu-close></div>
+  <div class="menu_preview" aria-hidden="true">
+    <img class="menu_preview-img is-active" src="./assets/img/projects/twirl-sm.webp" alt="" data-preview="home">
+    <img class="menu_preview-img" src="./assets/img/projects/thermolab-store-sm.webp" alt="" data-preview="services">
+    <img class="menu_preview-img" src="./assets/img/projects/tutortoday-sm.webp" alt="" data-preview="work">
+    <img class="menu_preview-img" src="./assets/img/projects/dermalyft-sm.webp" alt="" data-preview="blog">
+    <img class="menu_preview-img" src="./assets/img/projects/brian-williams-sm.webp" alt="" data-preview="about">
+    <img class="menu_preview-img" src="./assets/img/projects/heybuddy-sm.webp" alt="" data-preview="contact">
+    <span class="menu_preview-label eyebrow is-lime">FlowMelon · Webflow Studio</span>
+  </div>
+  <nav class="menu_panel" aria-label="Main">
+    <div>
+      <ul class="menu_links">
+        <li class="menu_link-wrap"><a class="menu_link" href="./index.html" data-nav="home"><span class="menu_link-num">01</span>Home</a></li>
+        <li class="menu_link-wrap"><a class="menu_link" href="./services.html" data-nav="services"><span class="menu_link-num">02</span>Services</a></li>
+        <li class="menu_link-wrap"><a class="menu_link" href="./work.html" data-nav="work"><span class="menu_link-num">03</span>Work</a></li>
+        <li class="menu_link-wrap"><a class="menu_link" href="./blog.html" data-nav="blog"><span class="menu_link-num">04</span>Blog</a></li>
+        <li class="menu_link-wrap"><a class="menu_link" href="./about.html" data-nav="about"><span class="menu_link-num">05</span>About Us</a></li>
+        <li class="menu_link-wrap"><a class="menu_link" href="./contact.html" data-nav="contact"><span class="menu_link-num">06</span>Contact Us</a></li>
+      </ul>
+      <div class="menu_sub" data-menu-fade>
+        <a href="./services/webflow-development.html">Webflow Development</a>
+        <a href="./services/figma-to-webflow.html">Figma to Webflow</a>
+        <a href="./services/webflow-design.html">Webflow Design</a>
+        <a href="./services/webflow-migration.html">Webflow Migration</a>
+        <a href="./services/webflow-shopify.html">Webflow + Shopify</a>
+      </div>
+    </div>
+    <div class="menu_bottom" data-menu-fade>
+      <div>
+        <div class="menu_label">Start a project</div>
+        <a class="menu_email text-link" href="mailto:hello@flowmelon.com">hello@flowmelon.com</a>
+      </div>
+      <div class="menu_socials">
+        <a class="social-icon" href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+        <a class="social-icon" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
+        <a class="social-icon" href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble"><svg><use href="#i-dribbble"/></svg></a>
+        <a class="social-icon" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+  <div class="page-wrapper">
+    <main class="main-wrapper" id="main">
+<section class="section_hero blog-hero section-light-gradient" data-hero>
+  <div class="padding-global">
+    <div class="container-large blog-hero_inner">
+      <span class="eyebrow" data-hero-item>The FlowMelon blog</span>
+      <h1 class="heading-style-h1 blog-hero_title" data-hero-title>Notes from the build desk.</h1>
+      <p class="text-size-medium text-color-grey blog-hero_sub" data-hero-item>Practical writing on Webflow, migrations, design handoff and running a white-label partnership with your agency.</p>
+      <span class="sticker is-gold" style="--r:16deg;right:17%;top:30%" data-sticker data-depth="0.6">Fresh reads</span>
+      <div class="sticker-shape is-star" style="left:15%;top:42%" data-sticker data-depth="1" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><defs><linearGradient id="gtbh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a4a"/><stop offset=".5" stop-color="#e0110f"/><stop offset="1" stop-color="#7a0000"/></linearGradient></defs>
+    <path d="M50 4C54 34 66 46 96 50 66 54 54 66 50 96 46 66 34 54 4 50 34 46 46 34 50 4z" fill="url(#gtbh)" stroke="#fff" stroke-width="4" stroke-linejoin="round" transform="rotate(12 50 50)"/>
+  </svg>
+</div>
+
+      <div class="sticker-shape is-smiley" style="right:22%;top:62%" data-sticker data-depth="0.9" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><defs><radialGradient id="gsbh" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#5d7bff"/><stop offset=".6" stop-color="#1a2cd8"/><stop offset="1" stop-color="#06064a"/></radialGradient></defs>
+    <circle cx="50" cy="50" r="46" fill="url(#gsbh)" stroke="#fff" stroke-width="4"/>
+    <g class="smiley_face"><ellipse cx="38" cy="40" rx="4.5" ry="7" fill="#fff"/><ellipse cx="62" cy="40" rx="4.5" ry="7" fill="#fff"/><path d="M30 58c6 12 34 12 40 0" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+    <ellipse cx="35" cy="22" rx="14" ry="6" fill="#fff" opacity=".35" transform="rotate(-25 35 22)"/>
+  </svg>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FEATURED ============================== -->
+<section class="section_featured">
+  <div class="padding-global">
+    <div class="container-large">
+      <a href="./blog/webflow-seo-migration-guide.html" class="featured-post" data-cursor="Read">
+        <div class="featured-post_media" data-clip-reveal>
+          <img src="./assets/img/projects/twirl.webp" alt="Twirl website on a laptop after a Webflow migration" width="1800" height="1200" data-parallax-img>
+        </div>
+        <span class="sticker is-red featured-post_sticker" style="--r:-10deg" data-sticker data-depth="0.5">New this week</span>
+        <div class="featured-post_body" data-reveal>
+          <span class="eyebrow is-blue">Featured · Migration</span>
+          <h2 class="heading-style-h3 featured-post_title">Webflow migrations without losing SEO: a 6-step checklist</h2>
+          <p class="text-size-regular text-color-grey">The exact checklist we use to move sites from WordPress, Wix and Squarespace to Webflow while keeping every ranking intact.</p>
+          <div class="blog-card_meta">Oct 12, 2026 <span>·</span> 9 min read</div>
+          <span class="button is-icon is-small featured-post_btn"><span class="button_label"><span>Read article</span><span aria-hidden="true">Read article</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LATEST ============================== -->
+<section class="section_latest">
+  <div class="padding-global padding-section-large">
+    <div class="container-large">
+      <div class="latest_head">
+        <h2 class="heading-style-h2" data-split>Latest articles</h2>
+        <div class="blog-filter" data-filter-group="#blog-list" role="group" aria-label="Filter articles" data-reveal>
+          <button class="blog-filter_btn is-active" type="button" data-filter="all">All</button>
+          <button class="blog-filter_btn" type="button" data-filter="webflow">Webflow</button>
+          <button class="blog-filter_btn" type="button" data-filter="migration">Migration</button>
+          <button class="blog-filter_btn" type="button" data-filter="design">Design</button>
+          <button class="blog-filter_btn" type="button" data-filter="shopify">Shopify</button>
+          <button class="blog-filter_btn" type="button" data-filter="agency">Agency life</button>
+        </div>
+      </div>
+      <div class="blog-grid" id="blog-list" data-reveal-stagger>
+        <article class="blog-card" data-cats="design webflow">
+  <a href="./blog/figma-to-webflow-handoff-checklist.html" class="blog-card_link" data-cursor="Read">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/tutortoday-sm.webp" alt="TutorToday site built from a Figma file" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Design</span></div>
+    <h3 class="blog-card_title">How to hand off a Figma file developers actually love</h3>
+    <div class="blog-card_meta">Oct 8, 2026 <span>·</span> 7 min read</div>
+  </a>
+</article>
+
+        <article class="blog-card" data-cats="webflow agency">
+  <a href="./blog/webflow-vs-wordpress.html" class="blog-card_link" data-cursor="Read">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/brian-williams-sm.webp" alt="Brian Williams website on a laptop" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Webflow</span></div>
+    <h3 class="blog-card_title">Webflow vs WordPress in 2026: an honest comparison for marketing teams</h3>
+    <div class="blog-card_meta">Sep 29, 2026 <span>·</span> 8 min read</div>
+  </a>
+</article>
+
+        <article class="blog-card" data-cats="migration webflow">
+  <a href="./blog/webflow-seo-migration-guide.html" class="blog-card_link" data-cursor="Read">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/twirl-sm.webp" alt="Twirl website on a laptop" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Migration</span></div>
+    <h3 class="blog-card_title">Webflow migrations without losing SEO: a 6-step checklist</h3>
+    <div class="blog-card_meta">Oct 12, 2026 <span>·</span> 9 min read</div>
+  </a>
+</article>
+
+        <article class="blog-card" data-cats="shopify">
+  <a href="./contact.html" class="blog-card_link" data-cursor="Soon">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/thermolab-store-sm.webp" alt="ThermoLab Shopify store" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Shopify</span><span class="blog-card_soon">Coming soon</span></div>
+    <h3 class="blog-card_title">Shopify + Webflow: when a hybrid store makes sense</h3>
+    <div class="blog-card_meta">Coming soon <span>·</span> 7 min read</div>
+  </a>
+</article>
+
+        <article class="blog-card" data-cats="webflow">
+  <a href="./contact.html" class="blog-card_link" data-cursor="Soon">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/myatomos-sm.webp" alt="MyAtomos content hub" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Webflow</span><span class="blog-card_soon">Coming soon</span></div>
+    <h3 class="blog-card_title">Webflow CMS architecture that scales past 10,000 items</h3>
+    <div class="blog-card_meta">Coming soon <span>·</span> 9 min read</div>
+  </a>
+</article>
+
+        <article class="blog-card" data-cats="agency design">
+  <a href="./contact.html" class="blog-card_link" data-cursor="Soon">
+    <div class="blog-card_media" data-tilt="4"><img src="./assets/img/projects/dermalyft-sm.webp" alt="DermaLyft skincare storefront" loading="lazy" width="900" height="600"><span class="eyebrow is-blue blog-card_cat">Agency life</span><span class="blog-card_soon">Coming soon</span></div>
+    <h3 class="blog-card_title">The agency owner’s guide to white-label Webflow development</h3>
+    <div class="blog-card_meta">Coming soon <span>·</span> 6 min read</div>
+  </a>
+</article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== TOPICS MARQUEE ============================== -->
+<section class="section_topics" aria-label="Topics we write about">
+  <div class="marquee topics-marquee" data-marquee data-speed="60" data-hover-slow>
+    <div class="marquee_track"><div class="marquee_group">
+      <span class="topic-pill is-lime">Webflow CMS</span><span class="topic-pill is-pink">Figma handoff</span><span class="topic-pill is-blue">Technical SEO</span><span class="topic-pill is-orange">Interactions</span><span class="topic-pill">Client-First</span><span class="topic-pill is-lime">Core Web Vitals</span><span class="topic-pill is-pink">Shopify</span><span class="topic-pill is-blue">White-label</span><span class="topic-pill is-orange">Migrations</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============================== NEWSLETTER ============================== -->
+<section class="section_newsletter">
+  <div class="padding-global padding-section-large">
+    <div class="container-large">
+      <div class="cta-banner newsletter" data-scale-in>
+        <span class="sticker is-red" style="--r:-10deg;left:2.5rem;top:-1rem" data-sticker data-depth="0.5">One email a month</span>
+        <div class="sticker-shape is-star" style="right:6%;top:2rem" data-sticker data-depth="1" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><defs><linearGradient id="g5nl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd36a"/><stop offset=".55" stop-color="#f29b14"/><stop offset="1" stop-color="#b35a00"/></linearGradient></defs>
+    <path d="M50 5l12.4 27.6 30 3.3-22.4 20.3 6.3 29.6L50 70.6 23.7 85.8 30 56.2 7.6 35.9l30-3.3z" fill="url(#g5nl)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+        <h2 class="heading-style-h2 cta-banner_title" data-split>Get the build notes</h2>
+        <p class="text-size-medium cta-banner_text">One practical email a month on Webflow, migrations and agency growth. No spam, unsubscribe anytime.</p>
+        <form class="newsletter_form" data-form novalidate>
+          <label class="sr-only" for="nl-email">Work email</label>
+          <input class="input newsletter_input" id="nl-email" type="email" name="email" placeholder="Your work email" required autocomplete="email">
+          <button class="button is-icon newsletter_btn" type="submit" data-magnetic="0.2"><span class="button_label"><span>Subscribe</span><span aria-hidden="true">Subscribe</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+        </form>
+        <p class="form-success newsletter_success" data-form-success hidden>You’re in. The next build note lands in your inbox soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+    <footer class="footer">
+  <div class="padding-global">
+    <div class="container-large">
+      <section class="say-hello" aria-label="Contact call to action">
+  <a href="./contact.html" class="say-hello_link" data-cursor="Let’s talk" data-say-hello>
+    <span class="sr-only">Say hello — start a project</span>
+    <span class="say-hello_text" aria-hidden="true"><span class="say-hello_char">S</span><span class="say-hello_char">A</span><span class="say-hello_char">Y</span><span class="say-hello_space"></span><span class="say-hello_char">H</span><span class="say-hello_char">E</span><span class="say-hello_char">L</span><span class="say-hello_char">L</span><span class="say-hello_char">O</span></span>
+  </a>
+  <span class="sticker is-red" style="--r:-10deg;left:-1%;top:4.5rem" data-sticker data-depth="0.5">Replies within 24h</span>
+  <div class="sticker-shape is-bubble" style="right:4%;top:3rem" data-sticker data-depth="0.7" aria-hidden="true">
+  <svg viewBox="0 0 120 100"><defs><linearGradient id="gqsh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b63ff"/><stop offset=".5" stop-color="#1a28d4"/><stop offset="1" stop-color="#080845"/></linearGradient></defs>
+    <path d="M22 6h76a18 18 0 0 1 18 18v32a18 18 0 0 1-18 18H52L30 94l4-20H22A18 18 0 0 1 4 56V24A18 18 0 0 1 22 6z" fill="url(#gqsh)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <text x="60" y="49" text-anchor="middle" class="burst_text" font-size="26" fill="#fff">Hey!</text>
+  </svg>
+</div>
+
+  <span class="sticker is-green" style="--r:-6deg;left:45%;bottom:-2.5rem" data-sticker data-depth="0.9">Free 15-min call</span>
+  <div class="sticker-shape is-star-sm" style="left:82%;bottom:-2rem" data-sticker data-depth="1" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><defs><linearGradient id="g5sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd36a"/><stop offset=".55" stop-color="#f29b14"/><stop offset="1" stop-color="#b35a00"/></linearGradient></defs>
+    <path d="M50 5l12.4 27.6 30 3.3-22.4 20.3 6.3 29.6L50 70.6 23.7 85.8 30 56.2 7.6 35.9l30-3.3z" fill="url(#g5sh)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+</section>
+
+      <div class="footer_top">
+        <div>
+          <div class="footer_label">Start a project</div>
+          <a class="footer_email text-link" href="mailto:hello@flowmelon.com">hello@flowmelon.com</a>
+          <div><a href="./contact.html" class="button is-icon is-small" data-magnetic><span class="button_label"><span>Book a Free 15-Min Call</span><span aria-hidden="true">Book a Free 15-Min Call</span></span><span class="button_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+</div>
+        </div>
+        <div>
+          <div class="footer_label">Pages</div>
+          <div class="footer_links">
+            <a class="footer_link" href="./index.html" data-nav="home">Home</a>
+            <a class="footer_link" href="./work.html" data-nav="work">Case Studies</a>
+            <a class="footer_link" href="./blog.html" data-nav="blog">Blog</a>
+            <a class="footer_link" href="./about.html" data-nav="about">About Us</a>
+            <a class="footer_link" href="./contact.html" data-nav="contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer_label">Services</div>
+          <div class="footer_links">
+            <a class="footer_link" href="./services/webflow-development.html" data-nav="webflow-development">Webflow Development</a>
+            <a class="footer_link" href="./services/figma-to-webflow.html" data-nav="figma-to-webflow">Figma to Webflow</a>
+            <a class="footer_link" href="./services/webflow-design.html" data-nav="webflow-design">Webflow Design</a>
+            <a class="footer_link" href="./services/webflow-migration.html" data-nav="webflow-migration">Webflow Migration</a>
+            <a class="footer_link" href="./services/webflow-shopify.html" data-nav="webflow-shopify">Webflow + Shopify</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer_label">Based in</div>
+          <div class="footer_city"><div class="footer_city-name">Karachi</div><div class="footer_time"><span class="footer_time-dot"></span><span data-clock="Asia/Karachi">--:--</span> &nbsp;-&nbsp; Local Time</div></div>
+          <div class="footer_city"><div class="footer_city-name">United States</div><div class="footer_time"><span class="footer_time-dot is-red"></span><span data-clock="America/New_York">--:--</span> &nbsp;-&nbsp; Local Time</div></div>
+          <div class="menu_socials" style="margin-top:1.5rem">
+            <a class="social-icon" style="border-color:var(--line)" href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a class="social-icon" style="border-color:var(--line)" href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg><use href="#i-x"/></svg></a>
+            <a class="social-icon" style="border-color:var(--line)" href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble"><svg><use href="#i-dribbble"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <a href="./index.html" class="footer_bottom-logo" aria-label="FlowMelon"><svg class="logo_svg" viewBox="0 0 261 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g class="logo_mark" fill="#146EF5"><path class="logo_arc" d="M13.6517 6.65802L13.6292 20.8783C10.6695 18.9697 7.4587 17.4821 4.08908 16.4583L0 15.726V3.08931C4.76685 3.08931 9.07757 4.48339 13.5939 6.56166L13.6645 1.65669C22.755 1.5282 31.37 4.93952 38.2569 10.8403C42.0692 14.3542 45.1583 18.5792 47.3505 23.2777C48.9951 27.1099 50.1708 30.9356 50.3571 35.2302H35.867C34.4055 22.0603 26.0057 11.7878 13.6517 6.65802Z"/><path class="logo_arc" d="M60.9316 35.2399C60.347 27.8809 57.228 21.1064 51.9632 16.0858C48.0444 12.5524 43.4896 10.1562 38.2891 9.61972V0.217715C40.7393 -0.118221 43.2273 -0.0651044 45.661 0.375108C50.778 1.18779 55.3842 3.23394 59.6146 6.2341C64.9396 10.1197 69.2112 15.2723 72.0425 21.2253C74.1232 25.6144 75.2924 30.3798 75.4795 35.2335L60.9316 35.2399Z"/><path class="logo_arc" d="M13.3391 35.1331H24.0742C23.7439 27.4285 16.7799 22.1637 13.3391 20.4943V35.1331Z"/></g><g class="logo_word" fill="currentColor"><path d="M90.2241 8.48459H104.285V12.3203H94.4357V19.4413H104.285V23.2736H94.4357V34.5054H90.2241V8.48459Z"/><path d="M111.896 8.48442V28.6494C111.896 29.4704 112.039 30.0465 112.325 30.3776C112.445 30.5308 112.598 30.655 112.772 30.741C112.946 30.827 113.138 30.8725 113.332 30.8743H114.735V34.5052H112.819C111.288 34.5052 110.09 34.0656 109.225 33.1864C108.359 32.3072 107.925 30.8754 107.923 28.891V8.48442H111.896Z"/><path d="M116.383 25.6022C116.374 24.3639 116.612 23.1363 117.084 21.9913C117.542 20.8757 118.217 19.8626 119.071 19.0114C119.953 18.1418 121.001 17.4573 122.151 16.9979C123.406 16.4955 124.747 16.2436 126.098 16.2563C127.446 16.2389 128.783 16.4887 130.034 16.9912C131.169 17.4463 132.201 18.1229 133.071 18.9814C133.941 19.8399 134.631 20.8631 135.101 21.9913C135.587 23.1331 135.834 24.3616 135.83 25.6022C135.844 26.85 135.616 28.0888 135.158 29.2499C134.716 30.3546 134.052 31.3564 133.205 32.193C132.324 33.0498 131.283 33.7248 130.142 34.1796C127.547 35.1611 124.683 35.1611 122.088 34.1796C120.946 33.7248 119.905 33.0498 119.024 32.193C118.179 31.3563 117.515 30.3544 117.074 29.2499C116.61 28.0902 116.375 26.8514 116.383 25.6022ZM126.115 19.8973C125.379 19.8945 124.651 20.0406 123.974 20.3269C123.315 20.6029 122.717 21.004 122.212 21.5081C121.699 22.024 121.292 22.635 121.014 23.3068C120.71 24.0383 120.559 24.8237 120.567 25.6156C120.564 26.3689 120.716 27.1149 121.014 27.8069C121.586 29.1498 122.643 30.228 123.974 30.8271C124.646 31.1323 125.376 31.2902 126.115 31.2902C126.853 31.2902 127.583 31.1323 128.256 30.8271C129.587 30.228 130.643 29.1498 131.215 27.8069C131.515 27.1154 131.667 26.3691 131.662 25.6156C131.672 24.8236 131.52 24.0378 131.215 23.3068C130.937 22.635 130.53 22.024 130.017 21.5081C128.982 20.4749 127.578 19.8955 126.115 19.8973Z"/><path d="M162.052 16.6659H166.297L159.726 34.5053H156.404L152.126 22.2466L147.911 34.5053H144.588L138.018 16.6659H142.263L146.233 27.9648L150.136 16.6659H154.163L158.132 27.9984L162.052 16.6659Z"/><path d="M190.68 11.0416H194.261V34.5053H190.462V19.0687L181.697 34.7839L172.898 19.0116V34.512H169.099V11.0416H172.71L181.697 27.1494L190.68 11.0416Z"/><path d="M214.576 31.4182C213.606 32.5723 212.386 33.4903 211.009 34.1028C209.721 34.6307 208.341 34.8976 206.948 34.8881C205.603 34.9169 204.266 34.6808 203.012 34.1934C201.959 33.7773 201.007 33.1412 200.22 32.3276C199.481 31.5583 198.91 30.6442 198.542 29.643C198.171 28.6293 197.983 27.5579 197.985 26.4785C197.977 25.3653 198.176 24.2604 198.572 23.22C198.949 22.2118 199.531 21.293 200.282 20.5223C201.033 19.7515 201.937 19.1457 202.935 18.7434C204.061 18.2836 205.269 18.0553 206.485 18.0722C207.688 18.05 208.882 18.2785 209.992 18.7434C211.033 19.1934 211.961 19.8684 212.71 20.7199C213.494 21.6297 214.091 22.6843 214.469 23.824C214.907 25.1402 215.121 26.5209 215.1 27.908H201.854C202.093 28.9801 202.705 29.932 203.583 30.5927C204.552 31.2897 205.725 31.644 206.918 31.5994C207.812 31.5977 208.696 31.4079 209.512 31.0424C210.423 30.6217 211.226 29.9998 211.861 29.2235L214.576 31.4182ZM211.086 24.965C210.927 23.9201 210.375 22.9755 209.542 22.324C208.661 21.6418 207.57 21.2861 206.455 21.3173C205.815 21.3052 205.178 21.4051 204.573 21.6126C204.073 21.7851 203.612 22.0517 203.213 22.3978C202.847 22.7263 202.544 23.1186 202.317 23.5556C202.092 24.0007 201.926 24.4734 201.824 24.9616L211.086 24.965Z"/><path d="M221.983 11.0416V29.2267C221.983 29.9649 222.114 30.4851 222.372 30.7838C222.48 30.9225 222.618 31.035 222.775 31.1129C222.933 31.1907 223.106 31.2319 223.281 31.2334H224.547V34.5053H222.818C221.44 34.5053 220.36 34.1093 219.577 33.3174C218.794 32.5254 218.402 31.2334 218.402 29.4414V11.0416H221.983Z"/><path d="M226.03 26.4781C226.022 25.3609 226.237 24.2532 226.661 23.2197C227.075 22.2152 227.684 21.3028 228.453 20.5351C229.248 19.7479 230.193 19.1283 231.232 18.7128C232.364 18.2576 233.575 18.0296 234.796 18.0417C236.012 18.0283 237.219 18.2564 238.346 18.7128C239.367 19.1228 240.297 19.7313 241.082 20.5032C241.866 21.2751 242.49 22.195 242.917 23.2096C243.351 24.2406 243.572 25.3492 243.564 26.4681C243.573 27.594 243.364 28.7109 242.947 29.7568C242.549 30.7529 241.951 31.6565 241.188 32.4112C240.394 33.1842 239.454 33.7922 238.423 34.1998C236.086 35.0857 233.505 35.0857 231.168 34.1998C230.138 33.7922 229.199 33.1843 228.406 32.4112C227.643 31.6575 227.044 30.7536 226.648 29.7568C226.232 28.714 226.022 27.6006 226.03 26.4781ZM234.796 21.3203C234.142 21.3185 233.496 21.446 232.892 21.6954C232.288 21.9447 231.74 22.3111 231.279 22.7734C230.816 23.2381 230.449 23.7887 230.198 24.3942C229.923 25.0542 229.786 25.7633 229.795 26.4781C229.791 27.1578 229.929 27.8308 230.198 28.4547C230.713 29.6679 231.665 30.643 232.866 31.1863C233.473 31.4596 234.13 31.6009 234.796 31.6009C235.461 31.6009 236.119 31.4596 236.725 31.1863C237.319 30.9175 237.859 30.5409 238.316 30.0756C238.772 29.6062 239.139 29.0568 239.396 28.4547C239.666 27.8308 239.803 27.1578 239.799 26.4781C239.808 25.7633 239.671 25.0542 239.396 24.3942C239.144 23.7895 238.777 23.2392 238.316 22.7734C237.86 22.3181 237.319 21.9557 236.725 21.7062C236.114 21.4491 235.458 21.3179 234.796 21.3203Z"/><path d="M257.427 25.3336C257.429 24.8197 257.372 24.3073 257.256 23.8067C257.155 23.3531 256.967 22.9234 256.702 22.5415C256.438 22.1791 256.093 21.8828 255.696 21.6757C255.242 21.4438 254.738 21.3284 254.229 21.3402C253.73 21.3147 253.232 21.4026 252.773 21.5973C252.313 21.792 251.903 22.0885 251.575 22.4644C250.937 23.2161 250.618 24.2709 250.618 25.6289V34.4915H247.038V18.4206H250.618V19.8536H250.679C251.135 19.2383 251.763 18.7714 252.484 18.5112C253.197 18.2238 253.957 18.0713 254.726 18.0616C255.506 18.0624 256.281 18.1824 257.024 18.4173C257.764 18.647 258.449 19.025 259.038 19.5281C259.648 20.0651 260.132 20.7295 260.457 21.4744C260.839 22.377 261.023 23.3507 260.998 24.3302V34.5184H257.417L257.427 25.3336Z"/></g></svg></a>
+        <div>© FlowMelon 2026. All Rights Reserved</div>
+        <a href="#main" class="footer_top-link" data-scroll-top>Back on Top <svg><use href="#i-up"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <script src="./assets/vendor/gsap.min.js" defer></script>
+  <script src="./assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="./assets/vendor/SplitText.min.js" defer></script>
+  <script src="./assets/vendor/Draggable.min.js" defer></script>
+  <script src="./assets/vendor/InertiaPlugin.min.js" defer></script>
+  <script src="./assets/vendor/MotionPathPlugin.min.js" defer></script>
+  <script src="./assets/vendor/CustomEase.min.js" defer></script>
+  <script src="./assets/vendor/lenis.min.js" defer></script>
+  <script src="./assets/js/app.js" data-root="./" defer></script>
+
+</body>
+</html>

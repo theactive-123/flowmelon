@@ -1,0 +1,15 @@
+.nf { min-height: 100svh; display: flex; align-items: center; background: radial-gradient(50rem 40rem at 50% 35%, rgba(20, 80, 220, .35), transparent 70%), var(--navy); color: #fff; padding: calc(var(--header-h) + 4rem) 0 6rem; }
+.nf .padding-global { width: 100%; position: relative; z-index: 2; }
+.nf_inner { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.75rem; }
+.nf_code { display: flex; align-items: center; gap: 1rem; font-family: var(--f-display); font-weight: 600; font-size: 16rem; line-height: .9; letter-spacing: -.06em; }
+.nf_zero { width: 12rem; height: 12rem; }
+.nf_orb { left: 50%; top: calc(50% - 12rem); width: 22rem; height: 22rem; margin: -11rem 0 0 -11rem; z-index: 1; }
+.nf_sub { max-width: 40rem; color: rgba(255, 255, 255, .7); }
+.nf_links { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+.nf_links .chip { transition: background-color .3s; }
+.nf_links .chip:hover { background: rgba(255, 255, 255, .2); }
+@media (max-width: 767px) {
+  .nf_code { font-size: 8rem; }
+  .nf_zero { width: 6rem; height: 6rem; }
+  .nf_orb { width: 16rem; height: 16rem; margin: -8rem 0 0 -8rem; top: calc(50% - 9rem); }
+}

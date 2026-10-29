@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Shared by Webflow Migration / Webflow + Shopify / Webflow Design pages
+   ========================================================================== */
+.svc-hero { position: relative; isolation: isolate; overflow: hidden; padding-top: calc(var(--header-h) + 6rem); padding-bottom: 6rem; }
+.svc-hero_bg { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(50rem 34rem at 12% 20%, rgba(173, 197, 240, .55), transparent 70%), radial-gradient(48rem 40rem at 88% 30%, rgba(252, 196, 230, .45), transparent 70%), radial-gradient(40rem 30rem at 70% 90%, rgba(214, 246, 130, .25), transparent 70%), var(--bg); }
+.svc-hero_bg.is-green { background: radial-gradient(50rem 34rem at 10% 30%, rgba(173, 197, 240, .5), transparent 70%), radial-gradient(48rem 40rem at 85% 15%, rgba(214, 246, 130, .45), transparent 70%), radial-gradient(40rem 30rem at 60% 95%, rgba(252, 196, 230, .35), transparent 70%), var(--bg); }
+.svc-hero_center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.75rem; }
+.svc-hero_title { max-width: 80rem; font-weight: 600; }
+.svc-hero_sub { max-width: 46rem; }
+.svc-hero .breadcrumb { margin-bottom: .25rem; }
+
+.svc-head { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; margin-bottom: 4.5rem; }
+.svc-head h2 { max-width: 62rem; font-weight: 600; }
+.svc-head.is-center { align-items: center; text-align: center; }
+.svc-head.is-center p { max-width: 46rem; }
+@media (max-width: 767px) { .svc-head { margin-bottom: 2.75rem; gap: 1rem; } .svc-hero { padding-top: calc(var(--header-h) + 3rem); padding-bottom: 4rem; } }
+
+.svc-pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+.svc-pill { padding: .7rem 1.4rem; border-radius: 10rem; background: #fff; border: 1px solid var(--line); font-size: 1.05rem; font-weight: 500; box-shadow: 0 .4rem 1rem rgba(3, 1, 29, .04); transition: transform .4s var(--ease-out), background-color .3s, color .3s; }
+.svc-pill:hover { transform: translateY(-3px); background: var(--ink); color: #fff; }
+
+.svc-panel { position: relative; border-radius: var(--radius-l); background: #fff; box-shadow: 0 2rem 4rem rgba(20, 40, 100, .08); border: 1px solid rgba(3, 1, 29, .05); }
+
+/* tick / cross icons */
+.svc-tick, .svc-cross { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+.svc-tick { background: var(--green); }
+.svc-cross { background: #f0442a; }
+.svc-tick svg, .svc-cross svg { width: 55%; height: 55%; }
+.svc-list { display: flex; flex-direction: column; gap: 1.3rem; }
+.svc-list li { display: flex; align-items: center; gap: 1rem; font-size: 1.2rem; }
+
+/* dark split section */
+.svc-dark { padding: 7rem 6rem; display: grid; grid-template-columns: 1fr 1.05fr; gap: 5rem; align-items: center; }
+.svc-dark::before { content: ''; position: absolute; width: 40rem; height: 40rem; left: -8rem; bottom: -14rem; border-radius: 50%; background: radial-gradient(circle, rgba(20, 110, 245, .5), transparent 65%); pointer-events: none; z-index: -1; }
+.svc-dark_copy { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; }
+.svc-dark_copy h2 { font-weight: 600; }
+.svc-dark_copy p { color: rgba(255, 255, 255, .72); max-width: 32rem; }
+@media (max-width: 991px) { .svc-dark { grid-template-columns: 1fr; padding: 5rem 2.5rem; gap: 3.5rem; } }
+@media (max-width: 767px) { .svc-dark { padding: 3.5rem 1.25rem; } }
+
+/* FAQ split variant (plus icons) */
+.svc-faq { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 100%; }
+
+/* CTA panel */
+.svc-cta { position: relative; overflow: hidden; isolation: isolate; border-radius: var(--radius-l); padding: 6rem 6rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; color: #fff; margin-inline: .9rem; }
+.svc-cta.is-blue { background: var(--blue); }
+.svc-cta.is-orange { background: var(--orange); }
+.svc-cta::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(40rem 28rem at 85% 20%, rgba(255, 255, 255, .28), transparent 70%), radial-gradient(30rem 30rem at 0% 100%, rgba(3, 1, 29, .25), transparent 70%); }
+.svc-cta_copy { display: flex; flex-direction: column; gap: 1.75rem; align-items: flex-start; }
+.svc-cta_copy h2 { font-weight: 600; }
+.svc-cta_copy p { max-width: 32rem; opacity: .86; }
+.svc-cta .sticker-shape, .svc-cta .sticker { z-index: 3; }
+.svc-inline-form { display: flex; align-items: center; gap: .5rem; padding: .4rem .4rem .4rem 1.5rem; border-radius: 10rem; background: #fff; width: min(100%, 34rem); transition: box-shadow .4s; }
+.svc-inline-form:focus-within { box-shadow: 0 0 0 .4rem rgba(198, 244, 60, .55), 0 1rem 2rem rgba(3, 1, 29, .2); }
+.svc-inline-form input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; color: var(--ink); font-size: 1.1rem; height: 3.2rem; }
+.svc-inline-form input::placeholder { color: #9a99a6; }
+.svc-cta .form-success { background: rgba(255, 255, 255, .18); color: #fff; }
+@media (max-width: 991px) { .svc-cta { grid-template-columns: 1fr; padding: 4.5rem 2.5rem; } }
+@media (max-width: 767px) { .svc-cta { padding: 3.5rem 1.25rem; margin-inline: .5rem; } .svc-inline-form { flex-direction: column; align-items: stretch; border-radius: 1.25rem; padding: .75rem; } .svc-inline-form .button { width: 100%; } }
+
+/* tilted colour cards (runway / results) */
+.tilt-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; align-items: start; }
+.tilt-card { --r: 0deg; position: relative; border-radius: 1.4rem; padding: 2.25rem 2rem 2.5rem; min-height: 20rem; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(var(--r)); box-shadow: 0 1.5rem 3rem rgba(3, 1, 29, .1); transition: box-shadow .4s; }
+.tilt-card:hover { box-shadow: 0 2rem 4rem rgba(3, 1, 29, .18); }
+.tilt-card.is-lime { background: var(--lime); }
+.tilt-card.is-pink { background: var(--pink); }
+.tilt-card.is-blue { background: var(--blue); color: #fff; }
+.tilt-card.is-orange { background: var(--orange); color: #fff; }
+.tilt-card_big { font-family: var(--f-display); font-weight: 700; font-size: 5.25rem; line-height: .95; letter-spacing: -.05em; }
+.tilt-card_title { font-family: var(--f-display); font-weight: 700; font-size: 2.1rem; letter-spacing: -.03em; margin-top: 2.5rem; }
+.tilt-card_text { margin-top: .75rem; font-size: 1.05rem; line-height: 1.45; opacity: .85; }
+@media (max-width: 991px) { .tilt-cards { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; } }
+@media (max-width: 767px) { .tilt-cards { grid-template-columns: 1fr; } .tilt-card { min-height: 14rem; } .tilt-card_big { font-size: 4rem; } }
+
+/* progress line under headings */
+.head-progress { width: min(100%, 30rem); height: .4rem; border-radius: 1rem; background: rgba(3, 1, 29, .08); overflow: hidden; }
+.head-progress span { display: block; height: 100%; background: var(--lime); border-radius: 1rem; transform: scaleX(0); transform-origin: left; }
+
+/* integration tile */
+.int-tile { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.5rem; border-radius: 1.25rem; background: #fff; box-shadow: 0 .75rem 2rem rgba(3, 1, 29, .06); transition: transform .5s var(--ease-out), box-shadow .5s; }
+.int-tile:hover { transform: translateY(-6px) rotate(-1.5deg); box-shadow: 0 1.5rem 3rem rgba(3, 1, 29, .12); }
+.int-tile_icon { flex: none; width: 3.2rem; height: 3.2rem; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; color: #fff; }
+.int-tile_icon img { width: 50%; height: 50%; filter: brightness(0) invert(1); }
+.int-tile_name { font-family: var(--f-display); font-weight: 600; font-size: 1.35rem; letter-spacing: -.02em; }
+.int-tile_sub { font-size: .95rem; color: var(--grey); }
+
+/* small screens: decorative stickers would collide with copy */
+@media (max-width: 767px) {
+  .svc-cta .sticker, .svc-cta .sticker-shape { display: none; }
+  .svc-hero .sticker-shape.is-star-sm, .des-hero_title-wrap .sticker, .des-hero_title-wrap .sticker-shape { display: none; }
+}

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.flowmelon.com/about</loc></url>
+  <url><loc>https://www.flowmelon.com/blog/figma-to-webflow-handoff-checklist</loc></url>
+  <url><loc>https://www.flowmelon.com/blog/webflow-seo-migration-guide</loc></url>
+  <url><loc>https://www.flowmelon.com/blog/webflow-vs-wordpress</loc></url>
+  <url><loc>https://www.flowmelon.com/blog</loc></url>
+  <url><loc>https://www.flowmelon.com/contact</loc></url>
   <url><loc>https://www.flowmelon.com/</loc></url>
+  <url><loc>https://www.flowmelon.com/services/figma-to-webflow</loc></url>
+  <url><loc>https://www.flowmelon.com/services/webflow-design</loc></url>
+  <url><loc>https://www.flowmelon.com/services/webflow-development</loc></url>
+  <url><loc>https://www.flowmelon.com/services/webflow-migration</loc></url>
+  <url><loc>https://www.flowmelon.com/services/webflow-shopify</loc></url>
+  <url><loc>https://www.flowmelon.com/services</loc></url>
+  <url><loc>https://www.flowmelon.com/work/thermolab</loc></url>
+  <url><loc>https://www.flowmelon.com/work</loc></url>
 </urlset>

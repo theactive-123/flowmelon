@@ -252,10 +252,10 @@
       gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.3, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
     $$('[data-reveal-stagger]').forEach((wrap) => {
-      gsap.from(wrap.children, { opacity: 0, y: 50, duration: 1.2, stagger: 0.08, scrollTrigger: { trigger: wrap, start: 'top 88%', once: true } });
+      gsap.from(wrap.children, { opacity: 0, y: 50, duration: 1.2, stagger: 0.08, clearProps: 'transform', scrollTrigger: { trigger: wrap, start: 'top 88%', once: true } });
     });
     $$('[data-pop]').forEach((el, i) => {
-      gsap.from(el, { scale: 0, rotate: -25, duration: 1.1, ease: 'back.out(2.5)', delay: (i % 4) * 0.12, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+      gsap.from(el, { scale: 0, rotate: -25, duration: 1.1, ease: 'back.out(2.5)', delay: (i % 4) * 0.12, clearProps: 'scale,rotate,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
     $$('[data-parallax]').forEach((el) => {
       const amt = parseFloat(el.dataset.parallax) || 15;
@@ -398,7 +398,7 @@
         const len = rope.getTotalLength();
         gsap.fromTo(rope, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: p, start: 'top 85%', end: 'top 35%', scrub: true } });
       }
-      gsap.from(cards, { y: -160, opacity: 0, rotation: (i) => tilts[i] + (i % 2 ? 22 : -22), duration: 1.8, ease: 'elastic.out(1, 0.45)', stagger: 0.12, scrollTrigger: { trigger: p, start: 'top 75%', once: true } });
+      gsap.from(cards, { y: -110, opacity: 0, rotation: (i) => tilts[i] + (i % 2 ? 22 : -22), duration: 1.8, ease: 'elastic.out(1, 0.45)', stagger: 0.12, scrollTrigger: { trigger: p, start: 'top 75%', once: true } });
       if (TOUCH) return;
       cards.forEach((c, i) => {
         let lastX = 0;
@@ -491,7 +491,7 @@
         all.forEach((o) => o !== item && o.classList.contains('is-open') && (o.classList.remove('is-open'), $('.faq-item_q', o).setAttribute('aria-expanded', 'false'), gsap.to($('.faq-item_a', o), { height: 0, duration: 0.6, ease: 'fm' })));
         set(open);
       });
-      if (i === 1 && item.closest('[data-faq-default]') === null && all.length > 2) { item.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); gsap.set(ans, { height: 'auto' }); }
+      if (i === 1 && !item.closest('[data-faq-closed]') && all.length > 2) { item.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); gsap.set(ans, { height: 'auto' }); }
     });
   }
 
@@ -648,7 +648,7 @@
         panels.forEach((p, i) => {
           const nextP = panels[i + 1];
           if (!nextP) return;
-          gsap.to(p, { scale: 0.92, filter: 'brightness(0.75)', ease: 'none', scrollTrigger: { trigger: nextP, start: 'top bottom', end: 'top 15%', scrub: true } });
+          gsap.fromTo(p, { scale: 1, filter: 'brightness(1)' }, { scale: 0.93, filter: 'brightness(0.82)', ease: 'none', scrollTrigger: { trigger: nextP, start: 'top bottom', end: 'top 15%', scrub: true } });
         });
       });
     });
@@ -867,6 +867,7 @@
     initFilters();
     initHoverReveal();
     initPhysics();
+    state.ready = true;
     document.dispatchEvent(new CustomEvent('flowmelon:ready', { detail: { gsap, ScrollTrigger, state } }));
     requestAnimationFrame(() => ScrollTrigger.refresh());
     window.addEventListener('load', () => ScrollTrigger.refresh());

@@ -225,7 +225,7 @@
 .path-step:nth-child(even) { margin-left: auto; flex-direction: row-reverse; text-align: right; }
 .path-step_num { font-family: var(--f-display); font-size: 7.5rem; line-height: .85; color: rgba(255, 255, 255, .22); font-weight: 500; transition: color .5s; }
 .path-step.is-active .path-step_num { color: var(--blue); }
-.path-step_title { font-family: var(--f-display); font-weight: 500; font-size: 2.4rem; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem; }
+.path-step_title { display: inline-block; font-family: var(--f-display); font-weight: 500; font-size: 2.4rem; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem; }
 .path-step_text { color: rgba(255, 255, 255, .7); font-size: 1.15rem; }
 @media (max-width: 767px) {
   .path-step, .path-step:nth-child(even) { width: 100%; margin-left: 0; flex-direction: row; text-align: left; margin-bottom: 2.5rem; }

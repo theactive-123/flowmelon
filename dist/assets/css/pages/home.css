@@ -43,3 +43,7 @@
   .section_keep-going .float-tag { font-size: .8rem; }
 }
 @media (min-width: 992px) and (min-height: 860px) { .hero-home_scroll { display: block; } }
+@media (max-width: 767px) {
+  .hero-home .sticker.is-red { display: none; }
+  .hero-home .sticker-shape.is-burst { left: auto !important; right: 3%; top: auto !important; bottom: 25%; }
+}

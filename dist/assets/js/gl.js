@@ -112,8 +112,8 @@ varying vec3 vNormal; varying vec3 vView; varying float vNoise;
 ${NOISE}
 void main(){
   vec3 p = position;
-  float n = snoise(normal * 1.4 + uTime * 0.35) ;
-  float n2 = snoise(normal * 3.2 - uTime * 0.25) * 0.35;
+  float n = snoise(normal * 1.1 + uTime * 0.3);
+  float n2 = snoise(normal * 2.0 - uTime * 0.2) * 0.25;
   float d = (n + n2) * uAmp;
   p += normal * d;
   vNoise = d;
@@ -142,7 +142,7 @@ const hex = (h, f) => new THREE.Color(h || f);
 export function mount(el, { mouse }) {
   const type = el.dataset.gl;
   const renderer = new THREE.WebGLRenderer({ antialias: type === 'orb', alpha: type === 'orb', powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, type === 'orb' ? 2 : 1.5));
+  renderer.setPixelRatio(type === 'orb' ? Math.min(window.devicePixelRatio || 1, 2) : type === 'nebula' ? 0.75 : Math.min(window.devicePixelRatio || 1, 1.25));
   el.appendChild(renderer.domElement);
   // never leave a black canvas behind: on a shader failure fall back to the static image
   let failed = false;
@@ -155,7 +155,7 @@ export function mount(el, { mouse }) {
     uBlue: { value: hex(el.dataset.glColor, type === 'flutes' ? '#7aa8f5' : '#146ef5') },
     uDeep: { value: hex(el.dataset.glDeep, type === 'nebula' ? '#0b1a66' : '#1665f0') },
     uAccent: { value: hex(el.dataset.glAccent, '#c6f43c') },
-    uAmp: { value: 0.22 },
+    uAmp: { value: 0.16 },
   };
   let orb; let points;
   if (type === 'orb') {
@@ -215,7 +215,7 @@ export function mount(el, { mouse }) {
     if (orb) {
       rotY += ((sm.x - 0.5) * 1.2 - rotY) * 0.05; rotX += ((0.5 - sm.y) * 0.8 - rotX) * 0.05;
       orb.rotation.set(rotX + t * 0.05, rotY + t * 0.12, 0);
-      uniforms.uAmp.value = 0.2 + Math.min(0.25, Math.hypot(sm.x - 0.5, sm.y - 0.5) * 0.3);
+      uniforms.uAmp.value = 0.14 + Math.min(0.14, Math.hypot(sm.x - 0.5, sm.y - 0.5) * 0.2);
     }
     renderer.render(scene, camera);
   };

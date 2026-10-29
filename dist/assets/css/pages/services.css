@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Services overview
+   ========================================================================== */
+.services-hero { min-height: 56rem; display: flex; align-items: center; padding-top: calc(var(--header-h) + 6rem); padding-bottom: 6rem; }
+.services-hero .padding-global { width: 100%; }
+.services-hero_inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.25rem; }
+.services-hero_title-wrap { position: relative; max-width: 96rem; padding: 0 3rem; }
+.services-hero_title { font-size: 6.2rem; }
+.services-hero_sub { max-width: 40rem; }
+.services-hero_jump { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1rem; }
+.services-hero_jump .chip { background: rgba(255, 255, 255, .7); border: 1px solid rgba(3, 1, 29, .08); padding: .6rem 1.1rem; font-size: 1rem; transition: background-color .3s, color .3s, transform .3s var(--ease-out); }
+.services-hero_jump .chip:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
+.services-hero_blobs span { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; z-index: 0; animation: blobmove 16s ease-in-out infinite alternate; }
+.services-hero_blobs span:nth-child(1) { width: 40rem; height: 30rem; left: -10rem; top: 10rem; background: #b9cff6; }
+.services-hero_blobs span:nth-child(2) { width: 34rem; height: 34rem; right: -8rem; top: -6rem; background: #c7d8fb; animation-delay: -5s; }
+.services-hero_blobs span:nth-child(3) { width: 24rem; height: 24rem; left: 45%; bottom: -10rem; background: #d9f7a8; opacity: .4; animation-delay: -9s; }
+@keyframes blobmove { to { transform: translate(6rem, 3rem) scale(1.15); } }
+
+.services-list_title-wrap { position: relative; max-width: 62rem; }
+.services-list_wave { position: absolute; right: -1rem; bottom: -.5rem; font-size: 3rem; filter: drop-shadow(0 .4rem .6rem rgba(0, 0, 0, .2)); }
+.services-stack_wrap { padding: 0 .9rem 4rem; }
+.service-stack { max-width: 110rem; margin: 0 auto; }
+.service-panel { will-change: transform; }
+
+/* panel visuals */
+.svc-viz-f2w, .svc-viz-migrate, .svc-viz-shop, .svc-viz-design, .svc-viz-browser { position: absolute; inset: 0; }
+.svc-win { position: absolute; left: 8%; top: 4%; width: 52%; height: 62%; border-radius: .8rem; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .4); display: flex; gap: .35rem; padding: .7rem; }
+.svc-win i { width: .5rem; height: .5rem; border-radius: 50%; background: rgba(255, 255, 255, .6); }
+.svc-win.is-back { left: auto; right: 2%; top: 32%; }
+.svc-dash { position: absolute; left: 30%; right: 30%; top: 44%; height: 3rem; width: 40%; }
+.svc-dash path { stroke: rgba(255, 255, 255, .7); stroke-width: 2; stroke-dasharray: 6 6; fill: none; animation: dash 1.2s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -24; } }
+.svc-node-a { left: 22%; top: 32%; }
+.svc-node-b { right: 20%; top: 40%; }
+.svc-node-b svg { width: 50%; height: 50%; }
+.svc-viz-browser .mini-browser { left: 6%; right: 6%; top: 8%; }
+.svc-viz-browser .mini-browser_body { min-height: 14rem; }
+.svc-src { background: #59750c; box-shadow: 0 .6rem 1.2rem rgba(63, 91, 0, .3); z-index: 2; }
+.svc-src img { filter: invert(1) brightness(2); }
+.svc-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+.svc-lines path { fill: none; stroke: #59750c; stroke-width: 2; stroke-dasharray: 6 6; animation: dash 1.2s linear infinite; }
+.svc-hub { right: 6%; top: 50%; margin-top: -5rem; background: #3f5b00; color: #fff; box-shadow: 0 0 0 1.4rem rgba(63, 91, 0, .2), 0 0 0 2.8rem rgba(63, 91, 0, .1); }
+.svc-hub svg { width: 50%; height: 50%; }
+.svc-shop-a, .svc-shop-b { top: 50%; margin-top: -5rem; background: #3c9c14; box-shadow: 0 0 0 1.4rem rgba(40, 120, 10, .25), 0 0 0 2.8rem rgba(40, 120, 10, .12); color: #fff; }
+.svc-shop-a { left: 16%; }
+.svc-shop-b { right: 12%; }
+.svc-shop-a img { filter: invert(1) brightness(2); width: 48%; height: 48%; }
+.svc-shop-b svg { width: 52%; height: 52%; }
+.svc-shop-line { position: absolute; left: calc(16% + 10rem); right: calc(12% + 10rem); top: 50%; height: 2px; background: rgba(3, 1, 29, .25); }
+.svc-shop-line i { position: absolute; top: -.35rem; left: 0; width: .75rem; height: .75rem; border-radius: 50%; background: var(--ink); animation: travel 2.2s var(--ease-io) infinite; }
+@keyframes travel { 0% { left: 0; } 50% { left: calc(100% - .75rem); } 100% { left: 0; } }
+.svc-viz-design { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; gap: 1rem; padding: 1rem 0; }
+.svc-type { grid-row: span 2; border-radius: 1.25rem; background: rgba(255, 255, 255, .55); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .5rem; }
+.svc-type span { font-family: var(--f-display); font-size: 8rem; line-height: 1; font-weight: 600; letter-spacing: -.05em; }
+.svc-type small { font-size: .9rem; opacity: .7; }
+.svc-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; border-radius: 1.25rem; background: rgba(255, 255, 255, .55); padding: 1rem; align-content: center; }
+.svc-swatches i { aspect-ratio: 1; border-radius: 50%; border: 2px solid #fff; transition: transform .4s var(--ease-out); }
+.svc-swatches i:hover { transform: scale(1.2) translateY(-4px); }
+.svc-comp { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; border-radius: 1.25rem; background: rgba(255, 255, 255, .55); padding: 1rem; }
+
+@media (max-width: 991px) {
+  .services-hero { min-height: auto; }
+  .services-hero_title { font-size: 4.6rem; }
+  .service-panel_visual { min-height: 20rem; }
+}
+@media (max-width: 767px) {
+  .services-hero { padding-top: calc(var(--header-h) + 4rem); }
+  .services-hero_title { font-size: 2.9rem; }
+  .services-hero_title-wrap { padding: 0; }
+  .services-hero .sticker { right: 0 !important; top: -3rem !important; }
+  .services-list_wave { font-size: 2rem; right: 0; bottom: -2rem; }
+  .services-stack_wrap { padding: 0 .5rem 2rem; }
+  .service-panel { padding: 2.25rem 1.5rem 0; border-radius: 1.5rem; }
+  .svc-hub, .svc-shop-a, .svc-shop-b { width: 6.5rem; height: 6.5rem; margin-top: -3.25rem; }
+  .svc-shop-line { left: calc(16% + 6.5rem); right: calc(12% + 6.5rem); }
+  .svc-type span { font-size: 5rem; }
+}
+@media (max-width: 767px) { .services-hero .sticker-shape.is-star { left: -.5rem !important; top: -3.5rem !important; width: 3rem; height: 3rem; } .services-hero .sticker-shape.is-smiley { display: none; } }

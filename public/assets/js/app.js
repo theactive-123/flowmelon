@@ -252,10 +252,10 @@
       gsap.fromTo(el, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.3, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
     $$('[data-reveal-stagger]').forEach((wrap) => {
-      gsap.from(wrap.children, { opacity: 0, y: 50, duration: 1.2, stagger: 0.08, scrollTrigger: { trigger: wrap, start: 'top 88%', once: true } });
+      gsap.from(wrap.children, { opacity: 0, y: 50, duration: 1.2, stagger: 0.08, clearProps: 'transform', scrollTrigger: { trigger: wrap, start: 'top 88%', once: true } });
     });
     $$('[data-pop]').forEach((el, i) => {
-      gsap.from(el, { scale: 0, rotate: -25, duration: 1.1, ease: 'back.out(2.5)', delay: (i % 4) * 0.12, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+      gsap.from(el, { scale: 0, rotate: -25, duration: 1.1, ease: 'back.out(2.5)', delay: (i % 4) * 0.12, clearProps: 'scale,rotate,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
     $$('[data-parallax]').forEach((el) => {
       const amt = parseFloat(el.dataset.parallax) || 15;
