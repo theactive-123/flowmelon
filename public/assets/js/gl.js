@@ -5,7 +5,7 @@
    <div data-gl="orb">     3D morphing glass orb that follows the cursor
    Optional: data-gl-color="#146ef5" data-gl-accent="#c6f43c"
    ========================================================================== */
-import * as THREE from '../vendor/three.module.min.js';
+import * as THREE from '../vendor/three.min.js';
 
 const NOISE = /* glsl */ `
 vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
@@ -200,12 +200,12 @@ export function mount(el, { mouse }) {
   new IntersectionObserver(([e]) => (visible = e.isIntersecting), { rootMargin: '100px' }).observe(el);
 
   const sm = new THREE.Vector2(0.5, 0.5);
-  const clock = new THREE.Clock();
+  const t0 = performance.now();
   let rotX = 0; let rotY = 0;
   const tick = () => {
     requestAnimationFrame(tick);
     if (failed || !visible || document.hidden) return;
-    const t = clock.getElapsedTime();
+    const t = (performance.now() - t0) / 1000;
     uniforms.uTime.value = t;
     const r = el.getBoundingClientRect();
     const mx = (mouse.x - r.left) / r.width; const my = 1 - (mouse.y - r.top) / r.height;

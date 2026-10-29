@@ -2,8 +2,8 @@
 
 Animated marketing site for FlowMelon, built from the designer's Figma file (`New - Flowmelon`). The missing service, blog, case-study, contact and 404 pages were designed to match it.
 
-- **Motion:** GSAP 3.13 (ScrollTrigger, SplitText, Draggable + Inertia, MotionPath) and Lenis smooth scroll
-- **3D / WebGL:** three.js — a fluted-glass hero shader, a dark nebula with particles, and a morphing glass orb
+- **Motion:** GSAP 3.15 (ScrollTrigger, SplitText, Draggable + Inertia, MotionPath) and Lenis 1.3 smooth scroll
+- **3D / WebGL:** three.js r186 — a fluted-glass hero shader, a dark nebula with particles, and a morphing glass orb
 - **Physics:** Matter.js throwable pills on the About page
 - **Responsive:** fluid `rem` scaling (1rem = 16px at 1920px; tuned for 1920 / 1440 / 1366), a tablet layout at ≤991px and a mobile layout at ≤767px
 - **Webflow-ready:** Client-First class naming, and every interaction is driven by `data-*` attributes
@@ -15,7 +15,15 @@ npm run dev      # builds to dist/, watches src/ + public/, serves http://localh
 npm run build    # one-off production build into dist/
 ```
 
-Node 18+ is needed. There are no npm dependencies: all libraries and fonts are self-hosted in `public/assets/vendor` and `public/assets/fonts`.
+Node 18+ is needed. The site has no runtime npm dependencies: all libraries and fonts are self-hosted in `public/assets/vendor` and `public/assets/fonts`.
+
+To update the libraries, fonts and icons, bump the versions in `package.json`, then run:
+
+```bash
+npm install && npm run vendor
+```
+
+That copies GSAP, Lenis, Matter.js, the fonts and the icons in from `node_modules`. It also bundles a tree-shaken, minified `three.min.js` with esbuild, because three.js no longer ships a minified build.
 
 `dist/` is plain static HTML, so you can deploy it as-is to Netlify, Vercel, Cloudflare Pages or GitHub Pages. WebGL scenes load as ES modules, so preview through the dev server rather than opening files with `file://`.
 
@@ -52,6 +60,7 @@ public/assets/
   js/gl.js                three.js scenes (lazy-loaded only where data-gl is used)
   js/pages/*.js           page-only behaviours (calculator, charts, table of contents …)
   vendor/ fonts/ img/
+scripts/vendor.mjs        refreshes vendor libraries, fonts and icons from node_modules
 ```
 
 Each page starts with a comment header:
@@ -112,16 +121,16 @@ Accessibility and performance:
 4. **Interactions.** Keep the `data-*` attributes on elements (Element settings → Custom attributes).
 5. **Scripts.** Add the libraries and `app.js` to Site settings → Custom code → Footer:
    ```html
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Draggable.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/InertiaPlugin.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/MotionPathPlugin.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/CustomEase.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
    <script src="https://YOUR-CDN/app.js" data-root="https://YOUR-CDN/"></script>
    ```
-   `data-root` tells `app.js` where to find `gl.js`, `vendor/three.module.min.js` and `vendor/matter.min.js`. Host them on any CDN, such as jsDelivr from this GitHub repo.
+   `data-root` tells `app.js` where to find `gl.js`, `vendor/three.min.js` and `vendor/matter.min.js`. Host them on any CDN, such as jsDelivr from this GitHub repo.
 6. **Forms.** Replace the demo submit in `initForms()` with Webflow native forms or your endpoint.
 7. **CMS.** Blog posts, case studies and testimonials map directly to CMS Collections; the card partials show the fields.
