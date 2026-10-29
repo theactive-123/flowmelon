@@ -867,6 +867,7 @@
     initFilters();
     initHoverReveal();
     initPhysics();
+    state.ready = true;
     document.dispatchEvent(new CustomEvent('flowmelon:ready', { detail: { gsap, ScrollTrigger, state } }));
     requestAnimationFrame(() => ScrollTrigger.refresh());
     window.addEventListener('load', () => ScrollTrigger.refresh());

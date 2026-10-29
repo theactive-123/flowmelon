@@ -66,6 +66,7 @@ function build() {
     const { meta, body } = parseMeta(fs.readFileSync(file, 'utf8'));
     const slug = rel.replace(/\\/g, '/').replace(/index\.html$/, '').replace(/\.html$/, '');
     const vars = { root, slug, canonical: `${SITE_URL}/${slug}`, year: String(new Date().getFullYear()), ...meta };
+    vars.pageJs = meta.js ? meta.js.split(',').map((c) => `  <script src="${root}assets/js/pages/${c.trim()}.js" defer></script>`).join('\n') : '';
     vars.pageCss = meta.css ? meta.css.split(',').map((c) => `  <link rel="stylesheet" href="${root}assets/css/pages/${c.trim()}.css">`).join('\n') : '';
     const content = render(body, vars);
     const html = render(layout, { ...vars, content });
