@@ -491,7 +491,7 @@
         all.forEach((o) => o !== item && o.classList.contains('is-open') && (o.classList.remove('is-open'), $('.faq-item_q', o).setAttribute('aria-expanded', 'false'), gsap.to($('.faq-item_a', o), { height: 0, duration: 0.6, ease: 'fm' })));
         set(open);
       });
-      if (i === 1 && item.closest('[data-faq-default]') === null && all.length > 2) { item.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); gsap.set(ans, { height: 'auto' }); }
+      if (i === 1 && !item.closest('[data-faq-closed]') && all.length > 2) { item.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); gsap.set(ans, { height: 'auto' }); }
     });
   }
 

@@ -142,7 +142,7 @@ const hex = (h, f) => new THREE.Color(h || f);
 export function mount(el, { mouse }) {
   const type = el.dataset.gl;
   const renderer = new THREE.WebGLRenderer({ antialias: type === 'orb', alpha: type === 'orb', powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, type === 'orb' ? 2 : 1.5));
+  renderer.setPixelRatio(type === 'orb' ? Math.min(window.devicePixelRatio || 1, 2) : type === 'nebula' ? 0.75 : Math.min(window.devicePixelRatio || 1, 1.25));
   el.appendChild(renderer.domElement);
   // never leave a black canvas behind: on a shader failure fall back to the static image
   let failed = false;
