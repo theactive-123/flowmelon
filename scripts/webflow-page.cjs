@@ -22,7 +22,7 @@ const expand = (p, v) => {
 const rulesOf = (r) => { // -> [{bp, sel, pseudo, decls:[[p,v]]}]
   let bp = 'main', body = r;
   if (r.startsWith('@media')) { const w = r.match(/(max|min)-width:\s*(\d+)/); bp = w[1] === 'min' ? 'xxl' : MQ[w[2]]; body = r.slice(r.indexOf('{') + 1, -1); }
-  return split(body).map((x) => { let sel = x.slice(0, x.indexOf('{')).trim(); let pseudo = null; if (sel.endsWith(':hover')) { pseudo = 'hover'; sel = sel.slice(0, -6); } const decls = x.slice(x.indexOf('{') + 1, -1).split(';').filter(Boolean).map((dc) => { const i = dc.indexOf(':'); return [dc.slice(0, i).trim(), dc.slice(i + 1).trim()]; }); return { bp, sel, pseudo, decls, raw: x }; });
+  return split(body).map((x) => { let sel = x.slice(0, x.indexOf('{')).trim(); let pseudo = null; const pm = sel.match(/:(hover|focus-visible|focus-within|focus|active|placeholder)$/); if (pm) { pseudo = pm[1]; sel = sel.slice(0, pm.index).replace(/:$/, ''); } const decls = x.slice(x.indexOf('{') + 1, -1).split(';').filter(Boolean).map((dc) => { const i = dc.indexOf(':'); return [dc.slice(0, i).trim(), dc.slice(i + 1).trim()]; }); return { bp, sel, pseudo, decls, raw: x }; });
 };
 // button fill/hover colours per variant (the converter resolves the ::before fill once for every button)
 const FILL = [[/is-white/, 'is-lime-fill', null], [/is-lime/, 'is-white-fill', null], [/is-ghost-light/, 'is-white-fill', '#03011d'], [/is-secondary/, null, '#fff'], [/is-blue/, null, null]];
@@ -49,7 +49,7 @@ for (const b of d.blocks) {
     if (sub[0].bp === 'xxl') { for (const s of sub) (xxl[s.sel + '|' + (s.pseudo || '')] ||= []).push(...s.decls); continue; }
     keep.push(r);
     for (const s of sub) { // properties the WHTML builder silently drops
-      const bad = s.decls.filter(([p, v]) => (/^background/.test(p) && (/currentcolor/i.test(v) || (v.match(/gradient\(/g) || []).length > 1)));
+      const bad = s.decls.filter(([p, v]) => (/^background/.test(p) && (/currentcolor/i.test(v) || (v.match(/gradient\(/g) || []).length > 1))) || /^(-webkit-)?mask-image$/.test(p)).filter(([p]) => p !== '-webkit-mask-image');
       if (bad.length) fixes.push(sty(s.sel, s.bp, s.pseudo, bad.flatMap(([p, v]) => expand(p, v)).map(([p, v]) => ({ property_name: p, property_value: v }))));
     }
   }
