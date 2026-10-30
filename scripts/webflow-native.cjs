@@ -19,7 +19,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
   await page.goto(`http://localhost:${PORT}/${PAGE}`, { waitUntil: 'load' });
   const result = await page.evaluate(({ assets }) => {
     document.documentElement.className = '';
-    const FACT = { main: 12.5, medium: 14, small: 14.5 };
+    const FACT = { main: 12.5, medium: 14, small: 14.5, xxl: 16 };
     const MEDIA = { '(max-width: 991px)': 'medium', '(max-width: 767px)': 'small', '(max-width: 479px)': 'tiny', '(min-width: 992px)': 'main' };
     const DROP = /^(font|will-change|animation.*|font-kerning|text-rendering|-webkit-.*|-moz-.*|cursor|isolation|contain|scroll-behavior|font-variation-settings|content|speak|touch-action|user-select|pointer-events|caret-color|text-wrap|overscroll-behavior.*)$/;
     const rootCS = getComputedStyle(document.documentElement);
@@ -74,6 +74,13 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
       u.replaceWith(...[...sym.childNodes].map((n) => n.cloneNode(true)));
     });
     document.querySelectorAll('.preloader,.transition,.cursor,.skip-link,body > svg,script,noscript,.gl-canvas canvas').forEach((n) => n.remove());
+    // ---------- bake JS-filled content into static markup (Webflow has no runtime for these)
+    document.querySelectorAll('[data-count]').forEach((el) => { const end = parseFloat(el.dataset.count); const dec = parseInt(el.dataset.decimals || (String(end).split('.')[1] || '').length, 10); el.textContent = (el.dataset.prefix || '') + end.toFixed(dec) + (el.dataset.suffix || ''); });
+    const TZ = { 'Asia/Karachi': 'PKT', 'America/New_York': 'EST', 'America/Los_Angeles': 'PST', 'Europe/London': 'GMT' };
+    document.querySelectorAll('[data-clock]').forEach((el) => { el.textContent = TZ[el.dataset.clock] || el.dataset.clock; });
+    document.querySelectorAll('[data-testimonials-nav]').forEach((nav) => { const n = nav.parentElement.querySelectorAll('.testimonial-card').length; nav.innerHTML = Array.from({ length: n }, (_, i) => `<span class="testimonials_dot${i === 0 ? ' is-active' : ''}"></span>`).join(''); });
+    document.querySelectorAll('[data-hero] [data-sticker]').forEach((el) => el.setAttribute('data-hero-sticker', ''));
+    document.querySelectorAll('[data-marquee] .marquee_group:only-child').forEach((g) => { const c = g.cloneNode(true); c.setAttribute('aria-hidden', 'true'); g.after(c); });
 
     // ---------- per element extra declarations
     const all = [...document.body.querySelectorAll('*')].filter((el) => !el.closest('svg') || el.tagName.toLowerCase() === 'svg');
@@ -169,16 +176,18 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         eff[bp] = {};
         for (const { it, n } of normed) { if (!ACTIVE[bp].includes(it.bp)) continue; const s = it.state || ''; for (const [p, v] of n) (eff[bp][s] ||= {})[p] = v; }
       }
-      const out = { main: {}, medium: {}, small: {}, tiny: {} };
+      const out = { main: {}, medium: {}, small: {}, tiny: {}, xxl: {} };
       const states = new Set(Object.values(eff).flatMap((o) => Object.keys(o)));
       const usedTiny = items.some((i) => i.bp === 'tiny');
       for (const s of states) {
         const val = (bp, p) => (eff[bp][s] && p in eff[bp][s] ? px(resolveRoot(eff[bp][s][p], bp), bp === 'tiny' ? 'small' : bp) : undefined);
         const props = new Set(['main', 'medium', 'small', 'tiny'].flatMap((bp) => Object.keys(eff[bp][s] || {})));
-        const m = {}, md = {}, sm = {}, tn = {};
+        const m = {}, md = {}, sm = {}, tn = {}, xx = {};
         for (const p of props) {
           const v0 = val('main', p), v1 = val('medium', p), v2 = val('small', p), v3 = val('tiny', p);
           if (v0 !== undefined) m[p] = v0;
+          const vx = eff.main[s] && p in eff.main[s] ? px(resolveRoot(eff.main[s][p], 'main'), 'xxl') : undefined;
+          if (vx !== undefined && vx !== v0) xx[p] = vx;
           if (v1 !== undefined && v1 !== v0) md[p] = v1;
           const prev1 = v1 !== undefined ? v1 : v0;
           if (v2 !== undefined && v2 !== prev1) sm[p] = v2;
@@ -188,13 +197,14 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         if (Object.keys(md).length) out.medium[s] = md;
         if (Object.keys(sm).length) out.small[s] = sm;
         if (Object.keys(tn).length) out.tiny[s] = tn;
+        if (Object.keys(xx).length) out.xxl[s] = xx;
       }
       return out;
     };
     const cssOf = (selector, styles) => {
-      const Q = { main: '', medium: '@media screen and (max-width: 991px)', small: '@media screen and (max-width: 767px)', tiny: '@media screen and (max-width: 479px)' };
+      const Q = { main: '', medium: '@media screen and (max-width: 991px)', small: '@media screen and (max-width: 767px)', tiny: '@media screen and (max-width: 479px)', xxl: '@media screen and (min-width: 1920px)' };
       let css = '';
-      for (const bp of ['main', 'medium', 'small', 'tiny']) {
+      for (const bp of ['main', 'medium', 'small', 'tiny', 'xxl']) {
         let block = '';
         for (const s in styles[bp]) {
           const body = Object.entries(styles[bp][s]).map(([p, v]) => `${p}:${v}`).join(';');
@@ -275,7 +285,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
       if (onlyBase || !has) { el.className = base || ''; continue; }
       const dropped = cls.slice(1).filter((c) => !/^fx-/.test(c));
       const label = (dropped.length ? dropped.join('-') : (base ? 'x' : el.tagName.toLowerCase())).replace(/[^\w-]/g, '').slice(0, 28);
-      const sig = (base || '') + '|' + JSON.stringify(styles);
+      const sig = (base || '') + '|' + JSON.stringify({ ...styles, xxl: undefined });
       let combo = sigToClass[sig];
       if (!combo) { combo = (base ? '' : 'el-') + label + '-' + hash(sig); sigToClass[sig] = combo; const sel = (base ? '.' + base : '') + '.' + combo; classCss[sel] = cssOf(sel, styles); }
       el.className = base ? base + ' ' + combo : combo;
@@ -289,7 +299,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         const styles = build(pe[where], el);
         if (!Object.values(styles).some((o) => Object.keys(o).length)) continue;
         const nm = (el.classList[0] || 'el') + '_' + where;
-        const sig = nm + JSON.stringify(styles);
+        const sig = nm + JSON.stringify({ ...styles, xxl: undefined });
         let c = sigToClass[sig]; if (!c) { c = nm + '-' + hash(sig); sigToClass[sig] = c; classCss['.' + c] = cssOf('.' + c, styles); }
         const child = document.createElement('span'); child.className = c; child.setAttribute('aria-hidden', 'true');
         const txt = contentDecl.val.match(/^["'](.+)["']$/); if (txt) child.textContent = txt[1];
