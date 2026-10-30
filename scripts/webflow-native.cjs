@@ -32,7 +32,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         if (ch === ';' && depth === 0) { if (cur.trim()) out.push(cur); cur = ''; } else cur += ch;
       }
       if (cur.trim()) out.push(cur);
-      return out.map((d) => { const i = d.indexOf(':'); return [d.slice(0, i).trim(), d.slice(i + 1).trim().replace(/\s*!important$/, '')]; }).filter(([p]) => p);
+      return out.map((d) => { const i = d.indexOf(':'); const v = d.slice(i + 1).trim(); return [d.slice(0, i).trim(), v.replace(/\s*!important$/, ''), /!important$/.test(v)]; }).filter(([p]) => p);
     };
     const splitSel = (s) => { const out = []; let depth = 0, cur = ''; for (const ch of s) { if (ch === '(') depth++; if (ch === ')') depth--; if (ch === ',' && !depth) { out.push(cur.trim()); cur = ''; } else cur += ch; } if (cur.trim()) out.push(cur.trim()); return out; };
     const resolveVars = (val, cs) => {
@@ -93,15 +93,15 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         if (/:(hover|focus|active)/.test(sel) || (pe && state)) { hoverDesc.push(r.sel); continue; } // needs parent/runtime state → IX
         if (/^(html|body|:root|\*)$/.test(sel) || /^(html|body|:root)\b/.test(sel)) continue;
         if (!pe && SIMPLE.test(sel)) {
-          for (const [prop, val] of r.decls) simpleOut.push({ key: sel, state, bp: r.bp, prop, val, order: r.order });
+          for (const [prop, val, imp] of r.decls) simpleOut.push({ key: sel, state, bp: r.bp, prop, val, imp, order: r.order });
           continue;
         }
         let els = []; try { els = [...document.querySelectorAll(sel || '*')]; } catch (e) { continue; }
         const spec = specificity(sel) + (state ? 10 : 0);
         for (const el of els) {
           if (!all.includes(el)) continue;
-          for (const [prop, val] of r.decls) {
-            const item = { bp: r.bp, state, prop, val, spec, order: r.order };
+          for (const [prop, val, imp] of r.decls) {
+            const item = { bp: r.bp, state, prop, val, spec: spec + (imp ? 10000 : 0), order: r.order };
             if (pe) { if (!pseudo.has(el)) pseudo.set(el, { before: [], after: [] }); pseudo.get(el)[pe].push(item); } else add(extra, el, item);
           }
         }
@@ -261,7 +261,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
       for (const k in simpleByKey) {
         const kc = keyClasses(k); const st = k.split('|')[1] || null;
         if (!kc.every((c) => cls.includes(c))) continue;
-        for (const d of simpleByKey[k]) items.push({ ...d, state: st, spec: kc.length * 10 + (st ? 10 : 0) });
+        for (const d of simpleByKey[k]) items.push({ ...d, state: st, spec: kc.length * 10 + (st ? 10 : 0) + (d.imp ? 10000 : 0) });
       }
       const own = base ? baseOwn(base) : new Set();
       const filtered = items.filter((it) => !(it.spec <= 1 && own.has(it.prop)));
@@ -291,7 +291,7 @@ const assets = JSON.parse(fs.readFileSync(ASSETS, 'utf8'));
         const nm = (el.classList[0] || 'el') + '_' + where;
         const sig = nm + JSON.stringify(styles);
         let c = sigToClass[sig]; if (!c) { c = nm + '-' + hash(sig); sigToClass[sig] = c; classCss['.' + c] = cssOf('.' + c, styles); }
-        const child = document.createElement('div'); child.className = c; child.setAttribute('aria-hidden', 'true');
+        const child = document.createElement('span'); child.className = c; child.setAttribute('aria-hidden', 'true');
         const txt = contentDecl.val.match(/^["'](.+)["']$/); if (txt) child.textContent = txt[1];
         where === 'before' ? el.prepend(child) : el.append(child);
       }
