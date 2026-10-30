@@ -784,7 +784,7 @@
     boxes.forEach((box) => {
       ScrollTrigger.create({
         trigger: box, start: 'top 80%', once: true,
-        onEnter: () => loadScript(ROOT + 'assets/vendor/matter.min.js').then(() => runPhysics(box)).catch(() => {}),
+        onEnter: () => (window.Matter ? Promise.resolve() : loadScript(ROOT + 'assets/vendor/matter.min.js')).then(() => runPhysics(box)).catch(() => {}),
       });
     });
   }
@@ -823,7 +823,8 @@
     if (!els.length || REDUCE) return;
     const lowPower = (navigator.hardwareConcurrency || 4) <= 2;
     if (lowPower) return;
-    import(new URL(ROOT + 'assets/js/gl.js', location.href).href)
+    // window.FMGL is present in the single-file export (gl.js inlined as a classic script)
+    (window.FMGL ? Promise.resolve(window.FMGL) : import(new URL(ROOT + 'assets/js/gl.js', location.href).href))
       .then((m) => els.forEach((el) => m.mount(el, { mouse: state.mouse })))
       .catch((err) => console.warn('[FlowMelon] WebGL disabled:', err));
   }

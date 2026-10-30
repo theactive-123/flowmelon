@@ -27,6 +27,18 @@ That copies GSAP, Lenis, Matter.js, the fonts and the icons in from `node_module
 
 `dist/` is plain static HTML, so you can deploy it as-is to Netlify, Vercel, Cloudflare Pages or GitHub Pages. WebGL scenes load as ES modules, so preview through the dev server rather than opening files with `file://`.
 
+## Single-file export (open from disk)
+
+To export every page as one self-contained `.html` file, run:
+
+```bash
+npm run export
+```
+
+Each file has the HTML, CSS, JS, GSAP, three.js, fonts and images embedded, so it opens with a double-click in Chrome (`file://`), with no server or internet needed.
+
+The output goes to `export/flowmelon-single-pages/` (the files) and `export/flowmelon-single-pages.zip`.
+
 ## Pages
 
 | Page | Source | Design reference |

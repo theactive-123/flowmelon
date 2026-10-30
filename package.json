@@ -8,7 +8,8 @@
     "build": "node build.mjs",
     "dev": "node build.mjs --watch --serve",
     "serve": "node build.mjs --serve",
-    "vendor": "node scripts/vendor.mjs"
+    "vendor": "node scripts/vendor.mjs",
+    "export": "node scripts/export-single.mjs"
   },
   "engines": {
     "node": ">=18"
