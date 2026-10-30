@@ -675,3 +675,10 @@ body.theme-dark { background: var(--navy); color: #fff; }
   .say-hello .sticker.is-green { left: auto !important; right: 0; bottom: -.5rem !important; }
   .say-hello .sticker-shape.is-bubble, .say-hello .sticker-shape.is-star-sm { display: none; }
 }
+
+/* testimonial stack resting state (GSAP drives it at runtime) */
+.testimonial-card:nth-child(1) { z-index: 6; }
+.testimonial-card:nth-child(2) { z-index: 5; transform: translateY(14px) rotate(-3.5deg) scale(.96); }
+.testimonial-card:nth-child(3) { z-index: 4; transform: translateY(28px) rotate(3deg) scale(.92); }
+.testimonial-card:nth-child(4) { z-index: 3; transform: translateY(42px) rotate(-1.5deg) scale(.88); }
+.testimonial-card:nth-child(n+5) { z-index: 1; opacity: 0; }
